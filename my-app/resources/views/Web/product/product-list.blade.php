@@ -102,13 +102,16 @@
                                     </div>
                                 </div>
 
+
+
+
                                 <div class="col-md-12 product-list" id="product-list">
 
                                     <div class="row content-product-list" style="margin-top: 20px;">
                                         @foreach($products as $post)
-                                        <form action="/add-cart" method="POST">
-                                            <div class="col-md-3 col-sm-6 col-xs-6 pro-loop">
-                                                <!--sử dụng  -->
+
+                                        <div class="col-md-3 col-sm-6 col-xs-6 pro-loop">
+                                            <form action="/add-cart" method="POST">
                                                 <div class="product-block product-resize">
                                                     <div class="product-img image-resize view view-third clearfix">
 
@@ -152,17 +155,15 @@
 
                                                     </div>
                                                 </div>
-                                            </div>
-                                            @csrf
-                                        </form>
+                                                @csrf
+                                            </form>
+                                        </div>
+
                                         @endforeach
 
                                     </div>
 
                                 </div>
-
-
-
                                 <!-- End sản phẩm trang chủ -->
                             </div>
                             <!-- Content-->
