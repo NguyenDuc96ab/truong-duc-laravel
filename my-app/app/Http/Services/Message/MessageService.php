@@ -18,7 +18,7 @@ class MessageService
             Message::create($request->input());
             Session::flash('success', 'Gửi phản hồi thành công');
         } catch (\Exception $err) {
-            dd($err->getMessage());
+
             Session::flash('error', 'Gửi phản hồi không thành công');
         }
     }

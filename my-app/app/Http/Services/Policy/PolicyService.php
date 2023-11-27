@@ -30,7 +30,6 @@ class PolicyService
             ]);
             Session::flash('success', 'Tạo chính sách mới thành công');
         } catch (\Exception $err) {
-            dd($err->getMessage());
             Session::flash('error', 'Tạo chính sách mới không thành công, xin hãy thử lại');
         }
     }
