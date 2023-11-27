@@ -95,7 +95,7 @@
 
     <link href='https://hstatic.net/0/0/global/design/theme-default/flexslider.css' rel='stylesheet' type='text/css'
         media='all' />
-    <link href='style123321.css?version=123' rel='stylesheet' type='text/css' media='all' />
+    <link href='/style123321.css?version=123' rel='stylesheet' type='text/css' media='all' />
 
     <link href='https://theme.hstatic.net/1000162838/1000469515/14/sidebar.css?v=657' rel='stylesheet' type='text/css'
         media='all' />
