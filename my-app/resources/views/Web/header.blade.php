@@ -1,0 +1,63 @@
+<header class="container clearfix">
+    <div class="logo col-md-3 col-xs-12">
+        <!-- LOGO -->
+
+        <h1>
+            <a href="/">
+                <img src="{{ asset('logo-05.png') }}" alt="Trường Đức - Thiết bị điện thông minh"
+                    class="img-responsive" />
+            </a>
+        </h1>
+
+        <h1 style="display:none">
+            <a href="/">Tấn Phong - Thiết bị điện thông minh</a>
+        </h1>
+
+
+    </div>
+    <div class="seach-header col-md-6 col-sm-6 col-xs-12">
+        <div id="SearchForm">
+            <div id="SearchFormContainer">
+                <form id="search-form" action="/search" method="GET">
+                    <input type="hidden" name="type" value="product" class="search-input" placeholder="Tìm kiếm ..." />
+                    <input type="text" name="q" class="search-input" placeholder="Tìm kiếm ..."
+                        value="{{ app('request')->input('q') }}" />
+                    <button id="ctlSearch_ctl00_btnSearch">
+                        <img src="https://sw001.hstatic.net/6/014cbf7c2aac46/icon-search1.png">
+                    </button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="phone-header col-md-3 col-sm-12 col-xs-12 pull-right">
+        <span>
+            Tư vấn mua hàng online
+        </span><br />
+        <a href="tel:0989 168 262">
+            0989 168 262
+        </a>
+    </div>
+
+</header>
+
+
+<script>
+document.getElementById('search-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Ngăn chặn hành động mặc định của form
+
+    // Lấy giá trị từ ô input
+    var searchQuery = document.getElementById('search-form').elements['q'].value;
+
+    // Kiểm tra xem ô input có giá trị không
+    if (searchQuery.trim() !== '') {
+        // Tạo đường dẫn tới trang tìm kiếm với tham số q
+        var searchUrl = '/search/' + encodeURIComponent(searchQuery);
+
+        // Chuyển hướng tới trang tìm kiếm
+        window.open(searchUrl, '_blank');
+    }
+});
+</script>
