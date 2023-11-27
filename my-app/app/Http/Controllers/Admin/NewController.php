@@ -16,7 +16,7 @@ class NewController extends Controller
     }
     public function create()
     {
-        return view('Admin.news.add', [
+        return view('admin.news.add', [
             'title' => 'Tạo mới tin tức'
         ]);
     }
@@ -29,7 +29,7 @@ class NewController extends Controller
 
     public function index()
     {
-        return view('Admin.news.list', [
+        return view('admin.news.list', [
             'title' => 'Danh sách tin tức',
             'news' => $this->newsService->get()
         ]);
@@ -37,7 +37,7 @@ class NewController extends Controller
 
     public function  show(News $news)
     {
-        return view('Admin.news.edit', [
+        return view('admin.news.edit', [
             'title' => 'Chỉnh sửa tin tức',
             'new' => $news
         ]);

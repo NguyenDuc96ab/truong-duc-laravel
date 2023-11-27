@@ -15,7 +15,7 @@ class BannerController extends Controller
     }
     public function create()
     {
-        return view('Admin.banner.add', [
+        return view('admin.banner.add', [
             'title' => 'Tạo mới banner',
             'bannerList' => $this->bannerService->getAll()
         ]);

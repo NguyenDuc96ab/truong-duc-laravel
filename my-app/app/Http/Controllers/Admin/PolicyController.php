@@ -17,7 +17,7 @@ class PolicyController extends Controller
     public function create()
     {
 
-        return view('Admin.policy.add', [
+        return view('admin.policy.add', [
             'title' => 'Tạo mới chính sách'
         ]);
     }
@@ -30,7 +30,7 @@ class PolicyController extends Controller
 
     public function index()
     {
-        return view('Admin.policy.list', [
+        return view('admin.policy.list', [
             'title' => 'Danh sách chính sách',
             'policys' => $this->policyService->getAll()
         ]);
@@ -40,7 +40,7 @@ class PolicyController extends Controller
     {
 
 
-        return view('Admin.policy.edit', [
+        return view('admin.policy.edit', [
             'title' => 'Chỉnh sửa chính sách',
             'policy' => $policy
         ]);
