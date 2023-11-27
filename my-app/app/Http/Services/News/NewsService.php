@@ -73,7 +73,7 @@ class NewsService
                 return false;
             }
         } catch (\Exception $err) {
-            dd($err->getMessage());
+
             Session::flash('error', 'Tạo bài viết mới không thành công, xin hãy thử lại');
         }
     }
