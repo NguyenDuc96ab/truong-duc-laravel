@@ -18,8 +18,7 @@
             <div class="mailbox-read-info">
                 <h5>Tin nhắn</h5>
                 <h6>Từ: {{$data->email}}
-                    <span
-                        class="mailbox-read-time float-right">{{ date_format(date_create($data->created_at),"H:i:s d/m/Y") }}</span>
+                    <span class="mailbox-read-time float-right">{{ date_format(date_create($data->created_at),"H:i:s d/m/Y") }}</span>
                 </h6>
             </div>
             <!-- /.mailbox-controls -->
@@ -34,24 +33,24 @@
         </div>
     </div>
 
+</div>
 
-
-    @endsection
-    @section('admin.footer-js')
-    <!-- Summernote -->
-    <script src="../../plugins/summernote/summernote-bs4.min.js"></script>
-    <script>
+@endsection
+@section('admin.footer-js')
+<!-- Summernote -->
+<script src="../../plugins/summernote/summernote-bs4.min.js"></script>
+<script>
     $(function() {
         // Summernote
         $('#summernote').summernote()
     })
-    </script>
+</script>
 
-    <script src="/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
-    <script>
+<script src="/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+<script>
     $(function() {
         bsCustomFileInput.init();
     });
-    </script>
+</script>
 
-    @endsection
+@endsection
