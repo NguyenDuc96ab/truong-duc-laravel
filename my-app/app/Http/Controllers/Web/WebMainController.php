@@ -13,6 +13,7 @@ use App\Http\Services\Product\ProductService;
 use App\Models\Cart;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class WebMainController extends Controller
 {
@@ -113,10 +114,13 @@ class WebMainController extends Controller
                     ->orWhere('slug', 'Đầu ghi Analog');
             });
         } elseif ($slug == 'Phụ kiện') {
-            $query = Product::query()->where('slug', 'Cáp')
-                ->orWhere('slug', 'Nguồn')
-                ->orWhere('slug', 'Chân đế')
-                ->orWhere('slug', 'Phụ kiện khác');
+
+            $query = Product::query()->where(function ($query) {
+                $query->where('slug', 'Cáp')
+                    ->orWhere('slug', 'Nguồn')
+                    ->orWhere('slug', 'Chân đế')
+                    ->orWhere('slug', 'Phụ kiện khác');
+            });
         } elseif ($slug == 'Sản phẩm khác') {
 
             $query = Product::query()->where(function ($query) {
@@ -128,17 +132,22 @@ class WebMainController extends Controller
                     ->orWhere('slug', 'Ổ cứng');
             });
         } elseif ($slug == 'Sản phẩm dành cho dự án') {
-            $query = Product::query()->where('slug', 'Camera giao thông')
-                ->orWhere('slug', 'Camera chống cháy nổ')
-                ->orWhere('slug', 'Camera cảm biến nhiệt')
-                ->orWhere('slug', 'Server lưu trữ')
-                ->orWhere('slug', 'Video wall');
+
+            $query = Product::query()->where(function ($query) {
+                $query->where('slug', 'Camera giao thông')
+                    ->orWhere('slug', 'Camera chống cháy nổ')
+                    ->orWhere('slug', 'Camera cảm biến nhiệt')
+                    ->orWhere('slug', 'Server lưu trữ')
+                    ->orWhere('slug', 'Video wall');
+            });
         } else {
             $query = Product::query()->where('slug', $slug);
         }
 
         // Thêm điều kiện active bằng 1 vào query
         $query->where('active', 1);
+
+
         switch ($sortBy) {
             case 'price-ascending':
                 $query->orderBy('price');
@@ -161,6 +170,7 @@ class WebMainController extends Controller
                 $query->orderBy('created_at', 'desc');
                 break;
         }
+
 
 
         $products = $query->paginate(36);
