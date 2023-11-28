@@ -31,7 +31,7 @@ class MessageController extends Controller
 
     public function index()
     {
-        return view('Admin.message.list', [
+        return view('admin.message.list', [
             'title' => 'Danh sách phản hồi',
             'message' => $this->messageService->get()
         ]);
@@ -39,7 +39,7 @@ class MessageController extends Controller
 
     public function show(Message $message)
     {
-        return view('Admin.message.view', [
+        return view('admin.message.view', [
             'title' => 'Nội dung phản hồi',
             'data' => $message
         ]);

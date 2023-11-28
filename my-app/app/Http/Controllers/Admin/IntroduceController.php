@@ -17,7 +17,7 @@ class IntroduceController extends Controller
     public function create()
     {
 
-        return view('Admin.introduce.add', [
+        return view('admin.introduce.add', [
             'title' => 'Tạo mới trang'
         ]);
     }
@@ -30,7 +30,7 @@ class IntroduceController extends Controller
 
     public function index()
     {
-        return view('Admin.introduce.list', [
+        return view('admin.introduce.list', [
             'title' => 'Danh sách chính sách',
             'introduces' => $this->introduceService->getAll()
         ]);
@@ -40,7 +40,7 @@ class IntroduceController extends Controller
     {
 
 
-        return view('Admin.introduce.edit', [
+        return view('admin.introduce.edit', [
             'title' => 'Chỉnh sửa trang',
             'introduce' => $introduce
         ]);

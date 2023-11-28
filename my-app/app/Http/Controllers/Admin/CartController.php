@@ -18,7 +18,7 @@ class CartController extends Controller
     public function index()
     {
         $customer = $this->cartService->getCustomer();
-        return view('Admin.cart.list', [
+        return view('admin.cart.list', [
             'title' => 'Danh sách đơn hàng',
             'customer' => $customer
         ]);
@@ -43,7 +43,7 @@ class CartController extends Controller
 
 
 
-        return view('Admin.cart.detail', [
+        return view('admin.cart.detail', [
             'title' => 'Chi tiết đơn hàng',
             'customer' => $customer,
             'cart' => $cartData,

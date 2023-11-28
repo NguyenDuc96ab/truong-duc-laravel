@@ -26,6 +26,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('generate', function (){
+    \Illuminate\Support\Facades\Artisan::call('storage:link');
+    echo 'ok';
+});
+
 Route::get('/', [WebMainController::class, 'home']);
 
 Route::get('/gioithieu/{slug}', [WebMainController::class, 'gioithieu']);
