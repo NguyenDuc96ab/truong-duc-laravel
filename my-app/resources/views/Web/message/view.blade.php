@@ -2,10 +2,14 @@
 
 @section('content')
 
+<section id="content" class="clearfix container">
 
-<div class="container-mp nav-wrapper">
+
+
     @include('Web.sidebar')
-    <div id="message-container">
+
+
+    <div id="page">
         <div class="col-md-9 col-xs-12" id="layout-page">
 
             <span class="header-contact header-page clearfix">
@@ -21,7 +25,6 @@
                         referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </p>
 
-
                 <div class="col-md-7" id="col-left contactFormWrapper">
                     <h3>Viết nhận xét</h3>
                     <hr class="line-left" />
@@ -29,8 +32,6 @@
                         Nếu bạn có thắc mắc gì, có thể gửi yêu cầu cho chúng tôi, và chúng tôi sẽ liên lạc lại với bạn
                         sớm nhất có thể .
                     </p>
-
-
                     <form accept-charset='UTF-8' action='' class='contact-form' method='post'>
                         <input name='form_type' type='hidden' value='contact'>
                         <input name='utf8' type='hidden' value='✓'>
@@ -61,85 +62,68 @@
                         @csrf
                     </form>
                     <h1 style="color:red" id="message"></h1>
+
                 </div>
 
-            </div>
+                <div class="col-md-5" id="col-right">
+                    <h3>Chúng tôi ở đây</h3>
+                    <hr class="line-right" />
+                    <h3 class="name-company">Công ty cổ phần kĩ thuật điện và viễn thông Trường Đức</h3>
+                    <p> Trường Đức cung cấp thiết bị điện thông minh nhà thông minh tại Việt Nam </p>
+                    <ul class="info-address">
+                        <li>
+                            <i class="glyphicon glyphicon-map-marker"></i>
+                            <span>88 Y Moan Ênuôi,Tân Lợi,Thành phố Buôn Ma Thuật,Đăk
+                                Lăk</span>
+                        </li>
+                        <li>
+                            <i class="glyphicon glyphicon-envelope"></i>
+                            <span>info@truongduc.vn</span>
+                        </li>
 
-            <div class="col-md-5" id="col-right">
-                <h3>Chúng tôi ở đây</h3>
-                <hr class="line-right" />
-                <h3 class="name-company">Công ty cổ phần kĩ thuật điện và viễn thông Trường Đức</h3>
-                <p> Trường Đức cung cấp thiết bị điện thông minh nhà thông minh tại Việt Nam </p>
-                <ul class="info-address">
-                    <li>
-                        <i class="glyphicon glyphicon-map-marker"></i>
-                        <span>88 Y Moan Ênuôi,Tân Lợi,Thành phố Buôn Ma Thuật,Đăk
-                            Lăk</span>
-                    </li>
-                    <li>
-                        <i class="glyphicon glyphicon-envelope"></i>
-                        <span>info@truongduc.vn</span>
-                    </li>
+                        <li>
+                            <i class="glyphicon glyphicon-phone-alt"></i>
+                            <span>0989 168 262</span>
+                        </li>
 
-                    <li>
-                        <i class="glyphicon glyphicon-phone-alt"></i>
-                        <span>0989 168 262</span>
-                    </li>
+                    </ul>
 
-                </ul>
-
+                </div>
             </div>
         </div>
-    </div>
 
 
-
-    <a href="#" class="scrollToTop">
-        <i class="fa fa-chevron-up"></i>
-    </a>
-
-
-    <div class="cs_muahang" style="clear: both;">
-
-
-
-    </div>
+</section>
 
 
 
 
+@endsection
 
 
 
+@section('footer')
+@include('Web.footer')
+@endsection
 
-    </section>
-
-    @endsection
-
-
-
-    @section('footer')
-    @include('Web.footer')
-    @endsection
-
-    @section('Web.footer-js')
-    @if (Session::has('error'))
-    <?php $message = Illuminate\Support\Facades\Session::get('error'); ?>
-    <script>
-    $(function() {
-        document.getElementById("message").innerHTML = "Gửi liên hệ lỗi";
-    });
-    </script>
-    @endif
+@section('Web.footer-js')
+@if (Session::has('error'))
+<?php $message = Illuminate\Support\Facades\Session::get('error'); ?>
+<script>
+$(function() {
+    document.getElementById("message").innerHTML = "Gửi liên hệ lỗi";
+});
+</script>
+@endif
 
 
-    @if (Session::has('success'))
-    <?php $message = Illuminate\Support\Facades\Session::get('success'); ?>
-    <script>
-    $(function() {
-        document.getElementById("message").innerHTML =
-            "Liên hệ đã được gửi đi. Cảm ơn bạn đã liên hệ chúng tôi";
-    });
-    </script>
-    @endif
-    @endsection
+@if (Session::has('success'))
+<?php $message = Illuminate\Support\Facades\Session::get('success'); ?>
+<script>
+$(function() {
+    document.getElementById("message").innerHTML =
+        "Liên hệ đã được gửi đi. Cảm ơn bạn đã liên hệ chúng tôi";
+});
+</script>
+@endif
+@endsection
