@@ -87,7 +87,7 @@ class WebMainController extends Controller
         return view('Web.home', [
             'title' => "Trang home",
             'product' => $products,
-            'banner' => $this->bannerService->getAll(),
+            'banner' => $this->bannerService->getByActive(),
             'newss' => $this->newService->getNewPost(),
             'tuya' => $tuya,
             'topseling' => $productData,
@@ -97,29 +97,36 @@ class WebMainController extends Controller
     public function sanpham($slug, Request $request)
     {
         $sortBy = $request->input('sort_by', 'manual'); // Mặc định là 'manual'
-        //dd($sortBy);
+        // dd($sortBy);
         $displaySlug = $slug;
 
         if ($slug == 'Sản phẩm' || $slug == 'Tất cả sản phẩm') {
             $query = Product::query();
         } elseif ($slug == 'Camera') {
-            $query = Product::query()->where('slug', 'Camera Ip')
-                ->orWhere('slug', 'Camera Analog');
+            $query = Product::query()->where(function ($query) {
+                $query->where('slug', 'Camera Ip')
+                    ->orWhere('slug', 'Camera Analog');
+            });
         } elseif ($slug == 'Đầu ghi') {
-            $query = Product::query()->where('slug', 'Đầu ghi Ip')
-                ->orWhere('slug', 'Đầu ghi Analog');
+            $query = Product::query()->where(function ($query) {
+                $query->where('slug', 'Đầu ghi Ip')
+                    ->orWhere('slug', 'Đầu ghi Analog');
+            });
         } elseif ($slug == 'Phụ kiện') {
             $query = Product::query()->where('slug', 'Cáp')
                 ->orWhere('slug', 'Nguồn')
                 ->orWhere('slug', 'Chân đế')
                 ->orWhere('slug', 'Phụ kiện khác');
         } elseif ($slug == 'Sản phẩm khác') {
-            $query = Product::query()->where('slug', 'Chuông cửa màn hình')
-                ->orWhere('slug', 'Khóa thông minh')
-                ->orWhere('slug', 'Thiết bị chấm công')
-                ->orWhere('slug', 'Switch')
-                ->orWhere('slug', 'Màn hình test camera')
-                ->orWhere('slug', 'Ổ cứng');
+
+            $query = Product::query()->where(function ($query) {
+                $query->where('slug', 'Chuông cửa màn hình')
+                    ->orWhere('slug', 'Khóa thông minh')
+                    ->orWhere('slug', 'Thiết bị chấm công')
+                    ->orWhere('slug', 'Switch')
+                    ->orWhere('slug', 'Màn hình test camera')
+                    ->orWhere('slug', 'Ổ cứng');
+            });
         } elseif ($slug == 'Sản phẩm dành cho dự án') {
             $query = Product::query()->where('slug', 'Camera giao thông')
                 ->orWhere('slug', 'Camera chống cháy nổ')
@@ -129,6 +136,9 @@ class WebMainController extends Controller
         } else {
             $query = Product::query()->where('slug', $slug);
         }
+
+        // Thêm điều kiện active bằng 1 vào query
+        $query->where('active', 1);
         switch ($sortBy) {
             case 'price-ascending':
                 $query->orderBy('price');

@@ -9,8 +9,7 @@
 <div class="card-body">
 
     <div class="card-header">
-        <button type="button" class="btn btn-block btn-outline-primary btn-lg" data-toggle="modal"
-            data-target="#modal-sm">Upload hình ảnh</button>
+        <button type="button" class="btn btn-block btn-outline-primary btn-lg" data-toggle="modal" data-target="#modal-sm">Upload hình ảnh</button>
     </div>
 
     <div class="card-body p-0">
@@ -25,6 +24,9 @@
                     </th>
                     <th style="width: 30%">
                         Hình ảnh
+                    </th>
+                    <th style="width: 20%">
+                        Kích hoạt
                     </th>
                     <th style="width: 20%">
                     </th>
@@ -46,10 +48,10 @@
                             </li>
                         </ul>
                     </td>
+                    <td>{!! \App\Helpers\Helper::active( $item->active) !!}</td>
                     <td class="project-actions text-right">
 
-                        <a class="btn btn-danger btn-sm"
-                            onclick="removeRow('{{ $item->id }}', '/admin/banners/destroy')">
+                        <a class="btn btn-danger btn-sm" onclick="removeRow('{{ $item->id }}', '/admin/banners/destroy')">
                             <i class="fas fa-trash">
                             </i>
                             Xóa
@@ -79,16 +81,14 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="name">Tên hình ảnh</label>
-                                <input type="text" class="form-control" id="name" name="name"
-                                    placeholder="Nhập tên hình ảnh">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Nhập tên hình ảnh">
                             </div>
 
                             <div class="form-group">
                                 <label for="exampleInputFile">Hình ảnh</label>
                                 <div class="input-group">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="file" name="file"
-                                            accept="image/*">
+                                        <input type="file" class="custom-file-input" id="file" name="file" accept="image/*">
                                         <label class="custom-file-label" for="exampleInputFile">Chọn hình ảnh</label>
                                     </div>
                                 </div>
@@ -99,13 +99,11 @@
                             <div class="form-group">
                                 <label>Kích hoạt</label>
                                 <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" value="1" id="active" name="active"
-                                        checked="">
+                                    <input class="custom-control-input" type="radio" value="1" id="active" name="active" checked="">
                                     <label for="active" class="custom-control-label">Có</label>
                                 </div>
                                 <div class="custom-control custom-radio">
-                                    <input class="custom-control-input" type="radio" value="0" id="no_active"
-                                        name="active">
+                                    <input class="custom-control-input" type="radio" value="0" id="no_active" name="active">
                                     <label for="no_active" class="custom-control-label">Không</label>
                                 </div>
 
@@ -136,16 +134,16 @@
 <!-- Summernote -->
 <script src="../../plugins/summernote/summernote-bs4.min.js"></script>
 <script>
-$(function() {
-    // Summernote
-    $('#summernote').summernote()
-})
+    $(function() {
+        // Summernote
+        $('#summernote').summernote()
+    })
 </script>
 
 <script src="/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <script>
-$(function() {
-    bsCustomFileInput.init();
-});
+    $(function() {
+        bsCustomFileInput.init();
+    });
 </script>
 @endsection

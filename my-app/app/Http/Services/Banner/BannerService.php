@@ -15,7 +15,13 @@ class BannerService
     {
         return Banner::orderbyDesc('id')->paginate(10); // tạo mối liên kết với funtion menu tạo trong model Product để liên kết 2 bảng product va menu
     }
-
+    public function getByActive()
+    {
+        return Banner::where('active', 1)
+            ->orderByDesc('id')
+            ->take(6)
+            ->get();
+    }
 
     public function create($request)
     {
