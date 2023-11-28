@@ -28,44 +28,88 @@ class ProductService
 
     public function getProductAll()
     {
-        return Product::orderbyDesc('id')->take(36)->get();
+        return Product::where('active', 1)
+            ->orderByDesc('id')
+            ->take(36)
+            ->get();
     }
 
 
     public function getProductItem()
     {
-        return Product::orderbyDesc('id')->take(8)->get();
+        return Product::where('active', 1)
+            ->orderByDesc('id')
+            ->take(8)
+            ->get();
     }
+
+    // public function getBySmartswitch($slug)
+    // {
+    //     if ($slug == 'Đầu ghi') {
+    //         $query = Product::query()->where('slug', 'Đầu ghi Ip')
+    //             ->orWhere('slug', 'Đầu ghi Analog');
+    //     }
+
+    //     $products = $query->where('active', 1)
+    //         ->orderbyDesc('id')
+    //         ->take(6)
+    //         ->get();
+
+    //     return $products;
+    // }
 
     public function getBySmartswitch($slug)
     {
         if ($slug == 'Đầu ghi') {
-            $query = Product::query()->where('slug', 'Đầu ghi Ip')
-                ->orWhere('slug', 'Đầu ghi Analog');
+            $query = Product::query()->where(function ($query) {
+                $query->where('slug', 'Đầu ghi Ip')
+                    ->orWhere('slug', 'Đầu ghi Analog');
+            });
         }
 
-        $products = $query->orderbyDesc('id')->take(6)->get();
+        $products = $query->where('active', 1)
+            ->orderbyDesc('id')
+            ->take(6)
+            ->get();
 
         return $products;
     }
+
+
+    // public function getByCamera($slug)
+    // {
+    //     if ($slug == 'Camera') {
+    //         $query = Product::query()
+    //             ->where('slug', 'Camera Ip')
+    //             ->orWhere('slug', 'Camera Analog');
+    //     }
+
+    //     $products = $query->where('active', 1)->orderbyDesc('id')->take(6)->get();
+
+    //     return $products;
+    // }
 
     public function getByCamera($slug)
     {
         if ($slug == 'Camera') {
-            $query = Product::query()->where('slug', 'Camera Ip')
-                ->orWhere('slug', 'Camera Analog');
+            $query = Product::query()
+                ->where(function ($query) {
+                    $query->where('slug', 'Camera Ip')
+                        ->orWhere('slug', 'Camera Analog');
+                });
         }
 
-        $products = $query->orderbyDesc('id')->take(6)->get();
+        $products = $query->where('active', 1)->orderbyDesc('id')->take(6)->get();
 
         return $products;
     }
+
 
     public function getBySmarthomeTuya($slug)
     {
 
 
-        $query = Product::query()->where('slug', $slug);
+        $query = Product::query()->where('slug', $slug)->where('active', 1);
 
 
 
