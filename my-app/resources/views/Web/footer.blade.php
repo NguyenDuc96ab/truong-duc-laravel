@@ -118,25 +118,7 @@
                     <div class="footer-static-content">
                         <!-- Facebook widget -->
 
-                        <div class="footer-static-content">
-                            <div class="fb-page" data-href="https://www.facebook.com/takatechsoft" data-height="300" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"> </div>
-                        </div>
-                        <div style="clear:both;">
 
-                        </div>
-
-                        <!-- #Facebook widget -->
-                        <script>
-                            (function(d, s, id) {
-                                var js, fjs = d.getElementsByTagName(s)[0];
-                                if (d.getElementById(id)) return;
-                                js = d.createElement(s);
-                                js.id = id;
-                                js.src =
-                                    "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=263266547210244&version=v2.0";
-                                fjs.parentNode.insertBefore(js, fjs);
-                            }(document, 'script', 'facebook-jssdk'));
-                        </script>
 
                     </div>
                 </div>
@@ -147,7 +129,8 @@
     </div>
     <div class="footer-bottom">
         <div class="container copyright">
-            <p>Copyright &copy; 2023 Trường Đức - Thiết bị điện thông minh. <a target='_blank' href='https://www.haravan.com/?utm_campaign=poweredby&amp;utm_medium=haravan&amp;utm_source=onlinestore'>Powered
+            <p>Copyright &copy; 2023 Trường Đức - Thiết bị điện thông minh. <a target='_blank'
+                    href='http://kythuatdientruongduc.com/'>Powered
                     by Truong Duc</a>.</p>
 
         </div>
