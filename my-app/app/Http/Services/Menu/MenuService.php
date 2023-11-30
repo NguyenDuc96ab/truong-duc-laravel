@@ -8,9 +8,39 @@ use App\Models\Menu;
 use App\Models\Product;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class MenuService
 {
+    public function getbyId($id)
+    {
+        return Menu::find($id);
+    }
+    private $html = '';
+    public function menuRecusiveAdd($parentId = 0, $subMark = '')
+    {
+        $data = Menu::where('parent_id', $parentId)->get();
+        foreach ($data as $dataItem) {
+            $this->html .= '<option value ="' . $dataItem->id . '">' . $subMark . $dataItem->name . ' </option>';
+            $this->menuRecusiveAdd($dataItem->id, $subMark . '--');
+        }
+        return $this->html;
+    }
+
+    public function menuRecusiveupdate($parentIdUpdate, $parentId = 0, $subMark = '')
+    {
+        $data = Menu::where('parent_id', $parentId)->get();
+        foreach ($data as $dataItem) {
+            if ($parentIdUpdate == $dataItem->id) {
+                $this->html .= '<option selected value ="' . $dataItem->id . '">' . $subMark . $dataItem->name . ' </option>';
+            } else {
+                $this->html .= '<option value ="' . $dataItem->id . '">' . $subMark . $dataItem->name . ' </option>';
+            }
+
+            $this->menuRecusiveupdate($parentIdUpdate, $dataItem->id, $subMark . '--');
+        }
+        return $this->html;
+    }
     public function getAll()
     {
         return Menu::orderby('id')->paginate(20);
@@ -26,8 +56,7 @@ class MenuService
             Menu::create([                     // create item mới dùng model Menu 
                 'name' => (string) $request->input('name'),
                 'parent_id' => (int) $request->input('parent_id'),
-                'description' => (string) $request->input('description'),
-                'active' => (string) $request->input('active'),
+                'slug' => Str::slug($request->input('name')),
             ]);
 
             Session::flash('success', 'Tạo danh mục thành công');
@@ -44,8 +73,6 @@ class MenuService
         $id = (int)$request->input('id');
         $menu = Menu::where('id', $id)->first();
         if ($menu) {
-            $patch = str_replace('storage', 'public',  $menu->thumb);  // xóa ảnh trong thư mục public
-            Storage::delete($patch);
             $menu->delete();
             return true;
         }
@@ -53,44 +80,17 @@ class MenuService
     }
 
 
-    public function update($request, $menu)
+    public function update($id, $request)
     {
+        $data = $this->getbyId($id);
         try {
-            if ($menu->id != $request->input('parent_id')) {
-                $menu->parent_id = (int) $request->input('parent_id');
-            }
-            $menu->name = (string) $request->input('name');
-            $menu->description = (string) $request->input('description');
-            $menu->active = (string) $request->input('active');
-            $menu->save();
-
-            Session::flash('success', 'Update danh mục thành công');
+            $data->name = $request->input('name');
+            $data->parent_id = $request->input('parent_id');
+            $data->slug = Str::slug($request->input('name'));
+            $data->save();
+            Session::flash('success', 'Update category thành công');
         } catch (\Exception $err) {
-            Session::flash('error', $err->getMessage());
-            return false;
+            Session::flash('error', 'Update category  không thành công, hãy thử lại');
         }
-    }
-
-    public function getId($id)
-    {
-        return Menu::where('id', $id)->where('active', 1)->firstOrFail();
-    }
-
-    public function delete($request)
-    {
-        $menu = Menu::where('id', $request->input('id'))->first();
-        if ($menu) {
-
-            try {
-                unlink("storage/" . $menu->url);
-            } catch (\Throwable $th) {
-                //throw $th;
-            }
-
-            $menu->delete();
-            return true;
-        }
-
-        return false;
     }
 }
