@@ -13,32 +13,16 @@
                 <!-- text input -->
                 <div class="form-group">
                     <label for="menu">Tên sản phẩm</label>
-                    <input type="text" name="name" value="{{ old('name') }}" class="form-control" id="name" placeholder="Nhập tên sản phẩm">
+                    <input type="text" name="name" value="{{ old('name') }}" class="form-control" id="name"
+                        placeholder="Nhập tên sản phẩm">
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="form-group">
                     <label>Chuyên mục (*)</label>
-                    <select class="form-control" name="slug">
+                    <select class="form-control" name="category_id">
                         <option>-- Chọn chuyên mục --</option>
-                        <option>Camera Ip</option>
-                        <option>Camera Analog</option>
-                        <option>Đầu ghi Ip</option>
-                        <option>Đầu ghi Analog</option>
-                        <option>Cáp</option>
-                        <option>Nguồn</option>
-                        <option>Chân đế</option>
-                        <option>Phụ kiện khác</option>
-                        <option>Chuông cửa màn hình</option>
-                        <option>Khóa thông minh</option>
-                        <option>Thiết bị chấm công</option>
-                        <option>Switch</option>
-                        <option>Màn hình test camera</option>
-                        <option>Camera giao thông</option>
-                        <option>Camera chống cháy nổ</option>
-                        <option>Camera cảm biến nhiệt</option>
-                        <option>Server lưu trữ</option>
-                        <option>Video wall</option>
+                        {!!$htmloption!!}
                     </select>
                 </div>
             </div>
@@ -104,20 +88,20 @@
 <!-- Summernote -->
 <script src="../../plugins/summernote/summernote-bs4.min.js"></script>
 <script>
-    $(function() {
-        // Summernote
-        $('#summernote').summernote()
-    })
+$(function() {
+    // Summernote
+    $('#summernote').summernote()
+})
 </script>
 
 <script src="/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <script>
-    $(function() {
-        bsCustomFileInput.init();
-    });
+$(function() {
+    bsCustomFileInput.init();
+});
 </script>
 
 <script>
-    CKEDITOR.replace('content');
+CKEDITOR.replace('content');
 </script>
 @endsection

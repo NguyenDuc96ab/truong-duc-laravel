@@ -20,34 +20,9 @@
             <div class="col-sm-6">
                 <div class="form-group">
                     <label>Chuyên mục (*)</label>
-                    <select class="form-control" name="slug">
+                    <select class="form-control" name="category_id">
                         <option>-- Chọn chuyên mục --</option>
-                        <option {{ $products->slug == 'Camera Ip' ? 'selected':''  }}>Camera Ip
-                        </option>
-                        <option {{ $products->slug == 'Camera Analog' ? 'selected':''  }}>Camera Analog
-                        </option>
-                        <option {{ $products->slug == 'Đầu ghi Ip' ? 'selected':''  }}>Đầu ghi Ip</option>
-                        <option {{ $products->slug == 'Đầu ghi Analog' ? 'selected':''  }}>Đầu ghi Analog</option>
-                        <option {{ $products->slug == 'Cáp' ? 'selected':''  }}>Cáp</option>
-                        <option {{ $products->slug == 'Nguồn' ? 'selected':''  }}>Nguồn</option>
-                        <option {{ $products->slug == 'Chân đế' ? 'selected':''  }}>Chân đế</option>
-                        <option {{ $products->slug == 'Phụ kiện khác' ? 'selected':''  }}>Phụ kiện khác</option>
-                        <option {{ $products->slug == 'Chuông cửa màn hình' ? 'selected':''  }}>Chuông cửa màn hình
-                        </option>
-                        <option {{ $products->slug == 'Khóa thông minh' ? 'selected':''  }}>Khóa thông minh</option>
-                        <option {{ $products->slug == 'Thiết bị chấm công' ? 'selected':''  }}>Thiết bị chấm công
-                        </option>
-                        <option {{ $products->slug == 'Switch' ? 'selected':''  }}>Switch</option>
-                        <option {{ $products->slug == 'Màn hình test camera' ? 'selected':''  }}>Màn hình test camera
-                        </option>
-                        <option {{ $products->slug == 'Camera giao thông' ? 'selected':''  }}>Camera giao thông</option>
-                        <option {{ $products->slug == 'Camera chống cháy nổ' ? 'selected':''  }}>Camera chống cháy nổ
-                        </option>
-                        <option {{ $products->slug == 'Camera cảm biến nhiệt' ? 'selected':''  }}>Camera cảm biến nhiệt
-                        </option>
-                        <option {{ $products->slug == 'Server lưu trữ' ? 'selected':''  }}>Server lưu trữ</option>
-                        <option {{ $products->slug == 'Video wall' ? 'selected':''  }}>Video wall</option>
-
+                        {!!$htmlOption!!}
                     </select>
                 </div>
             </div>

@@ -2,57 +2,26 @@
 
 @section('content')
 
+
+
+<div class="flexslider">
+    <ul class="slides">
+        @foreach($banner as $banner)
+        <li>
+            <a href="#">
+                <img class="img-responsive" style="width:100%" src="{{ "/storage/" . $banner->thumb }}" alt="" />
+            </a>
+        </li>
+        @endforeach
+
+
+    </ul>
+    <div class="flex-controls"></div>
+</div>
+
 <section id="content" class="clearfix container">
 
 
-    <div class="row contents">
-        <div class="col-md-9 col-sm-12 col-xs-12">
-
-            <!-- Begin slider -->
-
-            <div class="slider-default col-md-12 col-sm-12 col-xs-12">
-                <div class="flexslider-container">
-                    <div class="flexslider">
-                        <ul class="slides">
-                            @foreach($banner as $banner)
-                            <li>
-                                <a href="#">
-                                    <img class="img-responsive" style="width:100%" src="{{ "/storage/" . $banner->thumb }}" alt="" />
-                                </a>
-                            </li>
-                            @endforeach
-
-
-                        </ul>
-                        <div class="flex-controls"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- End slider -->
-
-        </div>
-
-        <div class="top-banner col-lg-3 col-md-3 col-sm-12 col-xs-12">
-
-            <div class="banner1">
-                <div class="image">
-                    <a href="#">
-                        <img class="img-responsive" alt="" src="https://theme.hstatic.net/1000162838/1000469515/14/img_left_1.jpg?v=657"></a>
-                </div>
-            </div>
-
-
-            <div class="banner2">
-                <div class="image">
-                    <a href="#">
-                        <img class="img-responsive" alt="" src="https://theme.hstatic.net/1000162838/1000469515/14/img_left_2.jpg?v=657"></a>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
 
 
 
@@ -63,7 +32,7 @@
     <div class="col-md-9 col-sm-12 col-xs-12">
 
         <div class="title-line">
-            <h3>Tất cả sản phẩm</h3>
+            <h3>tất cả sản phẩm</h3>
         </div>
         <div class="main-content">
 
@@ -78,7 +47,7 @@
 
                                 @if ($product->firstImage)
 
-                                <a href="/sanpham/detail/{{$product->id}}-{{ Str::slug($product->name, '-') }}.html" title="{{$product->firstImage->name}}">
+                                <a href="/detail/{{$product->id}}-{{ Str::slug($product->name, '-') }}.html" title="{{$product->firstImage->name}}">
                                     <img alt="{{$product->firstImage->name}}" src="{{ "/images/" . $product->firstImage->name }}">
                                 </a>
 
@@ -92,7 +61,7 @@
                                 <p class="pro-price"> {{number_format($product->price,0,'','.')}} đ </p>
                                 <p class="pro-price-del text-left">
                                 </p>
-                                <h3 class="pro-name"><a href="/sanpham/detail/{{$product->id}}-{{ Str::slug($product->name, '-') }}.html" title="{{$product->name}}">{{$product->name}} </a></h3>
+                                <h3 class="pro-name"><a href="/detail/{{$product->id}}-{{ Str::slug($product->name, '-') }}.html" title="{{$product->name}}">{{$product->name}} </a></h3>
                                 <input id="quantity" type="hidden" name="quantity" min="1" value="1" class="tc item-quantity" />
                                 <input type="hidden" name="id" value="{{$product->id}}">
                                 <div class="add-cart">
@@ -121,12 +90,12 @@
                 </form>
                 @endforeach
             </div>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-lg-12 pull-center">
-                    <a class="btn btn-readmore" href="/sanpham/Tất cả sản phẩm" role="button">Xem
+                    <a class="btn btn-readmore" href="/sanpham/{{$product->name}}/{{$product->category_id}}" role="button">Xem
                         thêm </a>
                 </div>
-            </div>
+            </div> -->
         </div>
 
 
@@ -191,7 +160,7 @@
                 </div>
                 @endforeach
             </div>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-lg-12 pull-center">
 
 
@@ -200,14 +169,14 @@
 
 
                 </div>
-            </div>
+            </div> -->
         </div>
 
 
 
         <div class="product-list clearfix ">
             <div class="title-line">
-                <h3>THIẾT BỊ CHẤM CÔNG</h3>
+                <h3>ĐIỆN CÔNG NGHIỆP</h3>
             </div>
 
             <div class="row content-product-list products-resize">
@@ -220,7 +189,7 @@
                         <div class="product-block product-resize">
                             <div class="product-img image-resize view view-third clearfix">
                                 @if ($tuya->firstImage)
-                                <a href="/sanpham/detail/{{ $tuya->id}}-{{ Str::slug( $tuya->name, '-') }}.html" title="{{$tuya->firstImage->name}}">
+                                <a href="/detail/{{ $tuya->id}}-{{ Str::slug( $tuya->name, '-') }}.html" title="{{$tuya->firstImage->name}}">
                                     <img alt="{{$tuya->firstImage->name}}" src="{{ "/images/" . $tuya->firstImage->name }}" alt="{{$tuya->firstImage->name}}" />
                                 </a>
                                 @endif
@@ -234,7 +203,7 @@
                                 </p>
                                 <p class="pro-price-del text-left">
                                     </h3>
-                                <h3 class="pro-name"><a href="/sanpham/detail/{{ $tuya->id}}-{{ Str::slug( $tuya->name, '-') }}.html" title="{{$tuya->name}}">{{$tuya->name}} </a></h3>
+                                <h3 class="pro-name"><a href="/detail/{{ $tuya->id}}-{{ Str::slug( $tuya->name, '-') }}.html" title="{{$tuya->name}}">{{$tuya->name}} </a></h3>
 
                                 <input id="quantity" type="hidden" name="quantity" min="1" value="1" class="tc item-quantity" />
                                 <div class="add-cart">
@@ -264,7 +233,7 @@
                 <div class="col-lg-12 pull-center">
 
 
-                    <a class="btn btn-readmore" href="/sanpham/Thiết bị chấm công" role="button">Xem
+                    <a class="btn btn-readmore" href="/sanpham/{{$tuya->name}}/{{$tuya->category_id}}" role="button">Xem
                         thêm </a>
 
 
