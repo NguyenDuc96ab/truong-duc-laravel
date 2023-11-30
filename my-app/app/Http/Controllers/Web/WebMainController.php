@@ -11,6 +11,7 @@ use App\Http\Services\News\NewsService;
 use App\Http\Services\Policy\PolicyService;
 use App\Http\Services\Product\ProductService;
 use App\Models\Cart;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -44,7 +45,7 @@ class WebMainController extends Controller
     public function home()
     {
         $products = $this->productService->getProductAll();
-        $tuya = $this->productService->getBySmarthomeTuya('Thiết bị chấm công');
+        $tuya = $this->productService->getBySmarthomeTuya(21);
         foreach ($products as $product) {
             // Truy cập quan hệ imgPro của mỗi sản phẩm
             // Và làm gì đó với nó, ví dụ lấy hình ảnh đầu tiên
@@ -84,6 +85,7 @@ class WebMainController extends Controller
                 Cart::where('product_id', $item->product_id)->delete();
             }
         }
+        $category = Category::where('parent_id', 0)->get();
 
         return view('Web.home', [
             'title' => "Trang home",
@@ -92,57 +94,19 @@ class WebMainController extends Controller
             'newss' => $this->newService->getNewPost(),
             'tuya' => $tuya,
             'topseling' => $productData,
+            'category' => $category
         ]);
     }
 
-    public function sanpham($slug, Request $request)
+    public function sanpham($slug, Request $request, $id)
     {
         $sortBy = $request->input('sort_by', 'manual'); // Mặc định là 'manual'
         // dd($sortBy);
         $displaySlug = $slug;
+        //dd($displaySlug);
 
-        if ($slug == 'Sản phẩm' || $slug == 'Tất cả sản phẩm') {
-            $query = Product::query();
-        } elseif ($slug == 'Camera') {
-            $query = Product::query()->where(function ($query) {
-                $query->where('slug', 'Camera Ip')
-                    ->orWhere('slug', 'Camera Analog');
-            });
-        } elseif ($slug == 'Đầu ghi') {
-            $query = Product::query()->where(function ($query) {
-                $query->where('slug', 'Đầu ghi Ip')
-                    ->orWhere('slug', 'Đầu ghi Analog');
-            });
-        } elseif ($slug == 'Phụ kiện') {
+        $query = Product::query()->where('category_id', $id);
 
-            $query = Product::query()->where(function ($query) {
-                $query->where('slug', 'Cáp')
-                    ->orWhere('slug', 'Nguồn')
-                    ->orWhere('slug', 'Chân đế')
-                    ->orWhere('slug', 'Phụ kiện khác');
-            });
-        } elseif ($slug == 'Sản phẩm khác') {
-
-            $query = Product::query()->where(function ($query) {
-                $query->where('slug', 'Chuông cửa màn hình')
-                    ->orWhere('slug', 'Khóa thông minh')
-                    ->orWhere('slug', 'Thiết bị chấm công')
-                    ->orWhere('slug', 'Switch')
-                    ->orWhere('slug', 'Màn hình test camera')
-                    ->orWhere('slug', 'Ổ cứng');
-            });
-        } elseif ($slug == 'Sản phẩm dành cho dự án') {
-
-            $query = Product::query()->where(function ($query) {
-                $query->where('slug', 'Camera giao thông')
-                    ->orWhere('slug', 'Camera chống cháy nổ')
-                    ->orWhere('slug', 'Camera cảm biến nhiệt')
-                    ->orWhere('slug', 'Server lưu trữ')
-                    ->orWhere('slug', 'Video wall');
-            });
-        } else {
-            $query = Product::query()->where('slug', $slug);
-        }
 
         // Thêm điều kiện active bằng 1 vào query
         $query->where('active', 1);
@@ -183,9 +147,12 @@ class WebMainController extends Controller
                 $product->firstImage = $firstImage;
             }
         }
+
+        $category = Category::where('parent_id', 0)->get();
         return view('Web.product.product-list', [
             'products' => $products,
             'displaySlug' => $displaySlug,
+            'category' => $category
             // 'image' =>  $firstImage,
         ]);
     }
@@ -196,10 +163,11 @@ class WebMainController extends Controller
 
     public function detail($id = '', $slug = '')
     {
+        // dd($id);
         $post = $this->productService->getById($id);
         $aaa = $this->productService->getProductItem();
-        $Smartswitch = $this->productService->getBySmartswitch('Đầu ghi');
-        $cameraItem = $this->productService->getByCamera('Camera');
+        $Smartswitch = $this->productService->getBySmartswitch($id, $post->category_id);
+
         //dd($bbb);
         foreach ($aaa as $product) {
             // Truy cập quan hệ imgPro của mỗi sản phẩm
@@ -222,21 +190,14 @@ class WebMainController extends Controller
         }
 
 
-        foreach ($cameraItem as $product) {
-            // Truy cập quan hệ imgPro của mỗi sản phẩm
-            // Và làm gì đó với nó, ví dụ lấy hình ảnh đầu tiên
-            if ($product->imgPro->isNotEmpty()) {
-                $firstImage2 = $product->imgPro->first();
-                // Bạn có thể thêm hình ảnh đầu tiên vào thuộc tính của mỗi sản phẩm
-                $product->firstImage2 = $firstImage2;
-            }
-        }
+
+        $category = Category::where('parent_id', 0)->get();
 
         return view('Web.product.product-detail', [
             'postObject' => $post,
             'productt' => $aaa,
             'smartswitch' => $Smartswitch,
-            'camera' => $cameraItem
+            'category' => $category
         ]);
     }
 
@@ -249,9 +210,10 @@ class WebMainController extends Controller
         $post = $this->policyService->getPostListBySlug($slug);
         // dd($post);
 
-
+        $category = Category::where('parent_id', 0)->get();
         return view('Web.polyci.polyci-list', [
-            'postObject' => $post
+            'postObject' => $post,
+            'category' => $category
         ]);
     }
 
@@ -260,9 +222,11 @@ class WebMainController extends Controller
     {
         $post = $this->newService->getPostListByCategory($category);
         //dd($post);
+        $category = Category::where('parent_id', 0)->get();
         return view('Web.new.new-list', [
             'postObject' => $post,
-            'newpost' => $this->newService->getNewPost()
+            'newpost' => $this->newService->getNewPost(),
+            'category' => $category
         ]);
     }
 
@@ -270,9 +234,11 @@ class WebMainController extends Controller
     {
         $post = $this->newService->getById($id);
         // dd($post);
+        $category = Category::where('parent_id', 0)->get();
         return view('Web.new.new-detail', [
             'postObject' => $post,
-            'newpost' => $this->newService->getNewPost()
+            'newpost' => $this->newService->getNewPost(),
+            'category' => $category
         ]);
     }
 
@@ -280,8 +246,10 @@ class WebMainController extends Controller
     {
         $post = $this->policyService->getPostListBySlug($slug);
         // dd($post);
+        $category = Category::where('parent_id', 0)->get();
         return view('Web.polyci.polyci-list', [
-            'postObject' => $post
+            'postObject' => $post,
+            'category' => $category
         ]);
     }
 
@@ -305,10 +273,11 @@ class WebMainController extends Controller
                 ];
             }
         }
-
+        $category = Category::where('parent_id', 0)->get();
         return view('Web.search.list', [
             'search' => $searchQuery,
-            'itemSearch' => $productsWithImages
+            'itemSearch' => $productsWithImages,
+            'category' => $category
         ]);
     }
 
@@ -316,8 +285,10 @@ class WebMainController extends Controller
     {
         $post = $this->introduceService->getPostListBySlug($slug);
         // dd($post);
+        $category = Category::where('parent_id', 0)->get();
         return view('Web.introduce.introduce-list', [
-            'postObject' => $post
+            'postObject' => $post,
+            'category' => $category
         ]);
     }
 }
