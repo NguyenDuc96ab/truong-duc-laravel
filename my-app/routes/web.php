@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\CartController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\IntroduceController;
 use App\Http\Controllers\Admin\MainController;
 use App\Http\Controllers\Admin\MenuController;
@@ -26,16 +27,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('generate', function (){
-    \Illuminate\Support\Facades\Artisan::call('storage:link');
+Route::get('generate', function () {
+    \Illuminate\Support\Facades\Artisan::call('migrate');
     echo 'ok';
 });
 
 Route::get('/', [WebMainController::class, 'home']);
 
 Route::get('/gioithieu/{slug}', [WebMainController::class, 'gioithieu']);
-Route::get('/sanpham/{slug}', [WebMainController::class, 'sanpham']);
-Route::get('/sanpham/detail/{id}-{slug}.html', [WebMainController::class, 'detail']);
+Route::get('/sanpham/{slug}/{id}', [WebMainController::class, 'sanpham']);
+Route::get('/detail/{id}-{slug}.html', [WebMainController::class, 'detail']);
 Route::get('/chinhsach/{slug}', [WebMainController::class, 'chinhsach']);
 
 Route::get('/tintuc/{category}', [WebMainController::class, 'tintuc']);
@@ -73,13 +74,25 @@ Route::middleware(['auth'])->group(function () {
             Route::post('edit/{introduce}', [IntroduceController::class, 'update']);
             Route::DELETE('destroy', [IntroduceController::class, 'destroy']);
         });
+
+        //menu
         Route::prefix('menus')->group(function () {
             Route::get('add', [MenuController::class, 'index']);
             Route::post('add', [MenuController::class, 'store']);
             Route::get('list', [MenuController::class, 'view']);
-            Route::post('edit/{menu}', [MenuController::class, 'update']);
-            Route::get('edit/{menu}', [MenuController::class, 'show']);
+            Route::post('edit/{id}', [MenuController::class, 'update']);
+            Route::get('edit/{id}', [MenuController::class, 'show']);
             Route::delete('destroy', [MenuController::class, 'destroy']);
+        });
+
+        //category
+        Route::prefix('categorys')->group(function () {
+            Route::get('add', [CategoryController::class, 'create']);
+            Route::post('add', [CategoryController::class, 'store']); // 'add' là đường dẫn file chứa funtion
+            Route::get('list', [CategoryController::class, 'index']);
+            Route::get('edit/{id}', [CategoryController::class, 'show']);
+            Route::post('edit/{id}', [CategoryController::class, 'update']);
+            Route::DELETE('destroy', [CategoryController::class, 'destroy']);
         });
 
         #Product
