@@ -117,7 +117,7 @@
 
 
                                                         @if ($post->firstImage)
-                                                        <a href="/sanpham/detail/{{$post->id}}-{{ Str::slug($post->name, '-') }}.html" title="Aptomat Cầu Dao Tổng Bảo Vệ Quá Áp, Thấp Áp, Quá Dòng, Rò Dòng Điều Khiển Qua Wifi ZigBee Tuya SHP-IO1v3">
+                                                        <a href="/detail/{{$post->id}}-{{ Str::slug($post->name, '-') }}.html" title="Aptomat Cầu Dao Tổng Bảo Vệ Quá Áp, Thấp Áp, Quá Dòng, Rò Dòng Điều Khiển Qua Wifi ZigBee Tuya SHP-IO1v3">
                                                             <img alt="{{ $post->firstImage->name}}" src="{{ "/images/" . $post->firstImage->name }}" alt="{{ $post->firstImage->name}}" />
                                                         </a>
                                                         @endif
@@ -132,7 +132,7 @@
                                                         </p>
                                                         <p class="pro-price-del text-left">
                                                             </h3>
-                                                        <h3 class="pro-name"><a href="/sanpham/detail/{{$post->id}}-{{ Str::slug($post->name, '-') }}.html" title="Aptomat Cầu Dao Tổng Bảo Vệ Quá Áp, Thấp Áp, Quá Dòng, Rò Dòng Điều Khiển Qua Wifi ZigBee Tuya SHP-IO1v3">
+                                                        <h3 class="pro-name"><a href="/detail/{{$post->id}}-{{ Str::slug($post->name, '-') }}.html" title="Aptomat Cầu Dao Tổng Bảo Vệ Quá Áp, Thấp Áp, Quá Dòng, Rò Dòng Điều Khiển Qua Wifi ZigBee Tuya SHP-IO1v3">
                                                                 {{$post->name}}
                                                             </a></h3>
 

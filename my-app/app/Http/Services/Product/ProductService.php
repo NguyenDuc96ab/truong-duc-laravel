@@ -17,7 +17,7 @@ class ProductService
 
     public function getById($id)
     {
-        return Product::find($id);
+        return Product::with('imgPro')->where('id', $id)->first();
     }
 
 
@@ -46,8 +46,10 @@ class ProductService
     // public function getBySmartswitch($slug)
     // {
     //     if ($slug == 'Đầu ghi') {
-    //         $query = Product::query()->where('slug', 'Đầu ghi Ip')
-    //             ->orWhere('slug', 'Đầu ghi Analog');
+    //         $query = Product::query()->where(function ($query) {
+    //             $query->where('slug', 'Đầu ghi Ip')
+    //                 ->orWhere('slug', 'Đầu ghi Analog');
+    //         });
     //     }
 
     //     $products = $query->where('active', 1)
@@ -58,60 +60,31 @@ class ProductService
     //     return $products;
     // }
 
-    public function getBySmartswitch($slug)
-    {
-        if ($slug == 'Đầu ghi') {
-            $query = Product::query()->where(function ($query) {
-                $query->where('slug', 'Đầu ghi Ip')
-                    ->orWhere('slug', 'Đầu ghi Analog');
-            });
-        }
 
-        $products = $query->where('active', 1)
-            ->orderbyDesc('id')
+
+    public function getBySmartswitch($id, $categoryId)
+    {
+        // Lấy tất cả sản phẩm liên quan có cùng category_id với sản phẩm hiện tại,
+        // nhưng loại trừ sản phẩm đang hiển thị chi tiết
+        $relatedProducts = Product::where('category_id', $categoryId)
+            ->where('id', '!=', $id)
+            ->where('active', 1)
+            ->orderBy('id', 'desc')
             ->take(6)
             ->get();
 
-        return $products;
+        return $relatedProducts;
     }
 
 
-    // public function getByCamera($slug)
-    // {
-    //     if ($slug == 'Camera') {
-    //         $query = Product::query()
-    //             ->where('slug', 'Camera Ip')
-    //             ->orWhere('slug', 'Camera Analog');
-    //     }
 
-    //     $products = $query->where('active', 1)->orderbyDesc('id')->take(6)->get();
 
-    //     return $products;
-    // }
 
-    public function getByCamera($slug)
+    public function getBySmarthomeTuya($categoryId)
     {
-        if ($slug == 'Camera') {
-            $query = Product::query()
-                ->where(function ($query) {
-                    $query->where('slug', 'Camera Ip')
-                        ->orWhere('slug', 'Camera Analog');
-                });
-        }
-
-        $products = $query->where('active', 1)->orderbyDesc('id')->take(6)->get();
-
-        return $products;
-    }
-
-
-    public function getBySmarthomeTuya($slug)
-    {
-
-
-        $query = Product::query()->where('slug', $slug)->where('active', 1);
-
-
+        $query = Product::query()
+            ->where('category_id', $categoryId)
+            ->where('active', 1);
 
         $products = $query->take(36)->get();
 
@@ -184,7 +157,7 @@ class ProductService
                 'name' => (string) $request->input('name'),
                 'SKU' => (string) $request->input('sku'),
                 'content' => (string) $request->input('content'),
-                'slug' => (string) $request->input('slug'),
+                'category_id' => (string) $request->input('category_id'),
                 'price' => $price,
                 'active' => (int) $request->input('active'),
             ]);
@@ -303,7 +276,7 @@ class ProductService
             // Cập nhật thông tin sản phẩm
             $product->name = $request->input('name');
             $product->content = $request->input('content');
-            $product->slug = $request->input('slug');
+            $product->category_id = $request->input('category_id');
             $product->price = $price;
             $product->SKU = $request->input('sku');
             $product->active = $request->input('active');

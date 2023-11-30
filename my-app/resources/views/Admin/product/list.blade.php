@@ -27,7 +27,7 @@
 
                 <td>{{$product->id}}</td>
                 <td>{{$product->name}}</td>
-                <td>{{$product->slug}}</td>
+                <td>{{ optional($product->category)->name }}</td>
                 <td>{{$product->price}}</td>
                 <td>{{$product->SKU}}</td>
                 <td>{!! \App\Helpers\Helper::active($product->active) !!}</td>

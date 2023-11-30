@@ -14,6 +14,7 @@ class Product extends Model
         'price',
         'content',
         'slug',
+        'category_id',
         'active',
 
     ];
@@ -23,5 +24,10 @@ class Product extends Model
     public function imgPro()
     {
         return $this->hasMany(Image_Products::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 }

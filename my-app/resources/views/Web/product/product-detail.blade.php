@@ -241,61 +241,15 @@
                         <div class="pro-recom-fake">
                             <div id="owl-recom-fake" class="owl-carousel owl-theme">
 
-
-
+                                @foreach($smartswitch as $item)
                                 <div class="item">
-                                    @foreach($camera as $item)
+
+
                                     <div class="pro-loop">
                                         <div class="product-block product-resize">
                                             <div class="product-img image-resize view view-third clearfix">
 
-                                                <a href="/sanpham/detail/{{$item->id}}-{{ Str::slug($item->name, '-') }}.html"
-                                                    title="{{$item->name}}">
-                                                    @if ($item->firstImage2)
-                                                    <img alt="{{$item->firstImage2->name}}"
-                                                        src="{{ "/images/" . $item->firstImage2->name }}"
-                                                        alt=" {{$item->firstImage2->name}}" />
-                                                    @endif
-                                                </a>
-                                            </div>
-
-
-
-                                            <div class="product-detail clearfix">
-
-
-                                                <!-- sử dụng pull-left -->
-                                                <p class="pro-price">{{number_format($item->price,0,'','.')}} đ </p>
-                                                <p class="pro-price-del text-left">
-                                                <h3 class="pro-name"><a
-                                                        href="/sanpham/detail/{{$item->id}}-{{ Str::slug($item->name, '-') }}.html"
-                                                        title="{{$item->name}}">
-                                                        {{$item->name}}
-                                                    </a></h3>
-                                                <div class="add-cart">
-                                                    <a class="add-to-cart"
-                                                        href="aptomat-cau-dao-tong-bao-ve-qua-ap-thap-ap-qua-dong-ro-dong-dieu-khien-qua-wifi-zigbee-tuya-shp-io1v3.html"
-                                                        data-id="1107227649" title="{{$item->name}}">
-                                                        <img class="add-cart-img"
-                                                            src="https://theme.hstatic.net/1000162838/1000469515/14/add-cart.png?v=657"
-                                                            alt="cart">
-                                                    </a>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    @endforeach
-                                </div>
-
-                                <div class="item">
-
-                                    @foreach($smartswitch as $item)
-                                    <div class="pro-loop">
-                                        <div class="product-block product-resize">
-                                            <div class="product-img image-resize view view-third clearfix">
-
-                                                <a href="/sanpham/detail/{{$item->id}}-{{ Str::slug($item->name, '-') }}.html"
+                                                <a href="/detail/{{$item->id}}-{{ Str::slug($item->name, '-') }}.html"
                                                     title="{{$item->name}}">
                                                     @if ($item->firstImage1)
                                                     <img alt="{{$item->firstImage1->name}}"
@@ -314,7 +268,7 @@
                                                 <p class="pro-price">{{number_format($item->price,0,'','.')}} đ </p>
                                                 <p class="pro-price-del text-left">
                                                 <h3 class="pro-name"><a
-                                                        href="/sanpham/detail/{{$item->id}}-{{ Str::slug($item->name, '-') }}.html"
+                                                        href="/detail/{{$item->id}}-{{ Str::slug($item->name, '-') }}.html"
                                                         title="{{$item->name}}">
                                                         {{$item->name}}
                                                     </a></h3>
@@ -331,10 +285,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    @endforeach
+
 
 
                                 </div>
+                                @endforeach
                             </div>
                         </div>
 
@@ -372,7 +327,7 @@
                         <div class="product-img image-resize view view-third clearfix">
 
 
-                            <a href="/sanpham/detail/{{$item->id}}-{{ Str::slug($item->name, '-') }}.html"
+                            <a href="/detail/{{$item->id}}-{{ Str::slug($item->name, '-') }}.html"
                                 title="Aptomat Cầu Dao Tổng Bảo Vệ Quá Áp, Thấp Áp, Quá Dòng, Rò Dòng Điều Khiển Qua Wifi ZigBee Tuya SHP-IO1v3">
                                 @if ($item->firstImage)
                                 <img alt="{{$item->firstImage->name }}" src="{{ "/images/" . $item->firstImage->name }}"
@@ -388,8 +343,7 @@
                             <p class="pro-price">{{number_format($item->price,0,'','.')}} đ </p>
                             <p class="pro-price-del text-left">
                                 </h3>
-                            <h3 class="pro-name"><a
-                                    href="/sanpham/detail/{{$item->id}}-{{ Str::slug($item->name, '-') }}.html"
+                            <h3 class="pro-name"><a href="/detail/{{$item->id}}-{{ Str::slug($item->name, '-') }}.html"
                                     title="{{$item->name}}">
                                     {{$item->name}} </a></h3>
                             <div class="add-cart">
