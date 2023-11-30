@@ -19,10 +19,7 @@
             <div class="content-contact content-page">
 
                 <p class="text-center">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3892.1693081515305!2d108.0545588!3d12.702370100000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3171f7e737a72379%3A0x5eeb31b365bee7a8!2zODggWSBNb2FuIMOKbnXDtGwsIFTDom4gTOG7o2ksIFRow6BuaCBwaOG7kSBCdcO0biBNYSBUaHXhu5l0LCDEkOG6r2sgTOG6r2s!5e0!3m2!1svi!2s!4v1700536169991!5m2!1svi!2s"
-                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3892.1693081515305!2d108.0545588!3d12.702370100000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3171f7e737a72379%3A0x5eeb31b365bee7a8!2zODggWSBNb2FuIMOKbnXDtGwsIFTDom4gTOG7o2ksIFRow6BuaCBwaOG7kSBCdcO0biBNYSBUaHXhu5l0LCDEkOG6r2sgTOG6r2s!5e0!3m2!1svi!2s!4v1700536169991!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </p>
 
                 <div class="col-md-7" id="col-left contactFormWrapper">
@@ -41,18 +38,15 @@
 
                         <div class="form-group">
                             <label for="contactFormName" class="sr-only">Tên</label>
-                            <input required type="text" class="form-control input-lg" name="name"
-                                placeholder="Tên của bạn" autocapitalize="words" value="">
+                            <input required type="text" class="form-control input-lg" name="name" placeholder="Tên của bạn" autocapitalize="words" value="">
                         </div>
                         <div class="form-group">
                             <label for="contactFormEmail" class="sr-only">Email</label>
-                            <input required type="email" name="email" placeholder="Email của bạn"
-                                class="form-control input-lg" autocorrect="off" autocapitalize="off" value="">
+                            <input required type="email" name="email" placeholder="Email của bạn" class="form-control input-lg" autocorrect="off" autocapitalize="off" value="">
                         </div>
                         <div class="form-group">
                             <label for="contactFormMessage" class="sr-only">Nội dung</label>
-                            <textarea required rows="6" name="content" class="form-control"
-                                placeholder="Viết bình luận"></textarea>
+                            <textarea required rows="6" name="content" class="form-control" placeholder="Viết bình luận"></textarea>
                         </div>
 
                         <input type="submit" class="btn btn-primary btn-lg" value="Gửi liên hệ" />
@@ -73,7 +67,7 @@
                     <ul class="info-address">
                         <li>
                             <i class="glyphicon glyphicon-map-marker"></i>
-                            <span>88 Y Moan Ênuôi,Tân Lợi,Thành phố Buôn Ma Thuật,Đăk
+                            <span>80 Y Moan Ênuôi,Tân Lợi,Thành phố Buôn Ma Thuật,Đăk
                                 Lăk</span>
                         </li>
                         <li>
@@ -110,9 +104,9 @@
 @if (Session::has('error'))
 <?php $message = Illuminate\Support\Facades\Session::get('error'); ?>
 <script>
-$(function() {
-    document.getElementById("message").innerHTML = "Gửi liên hệ lỗi";
-});
+    $(function() {
+        document.getElementById("message").innerHTML = "Gửi liên hệ lỗi";
+    });
 </script>
 @endif
 
@@ -120,10 +114,10 @@ $(function() {
 @if (Session::has('success'))
 <?php $message = Illuminate\Support\Facades\Session::get('success'); ?>
 <script>
-$(function() {
-    document.getElementById("message").innerHTML =
-        "Liên hệ đã được gửi đi. Cảm ơn bạn đã liên hệ chúng tôi";
-});
+    $(function() {
+        document.getElementById("message").innerHTML =
+            "Liên hệ đã được gửi đi. Cảm ơn bạn đã liên hệ chúng tôi";
+    });
 </script>
 @endif
 @endsection

@@ -93,7 +93,7 @@
                     <div class="footer-static-content">
                         <div class="contact-add">
 
-                            <p><i class="fa fa-map-marker"></i><span>88 Y Moan Ênuôi,Tân Lợi,Thành phố Buôn Ma Thuật,Đăk
+                            <p><i class="fa fa-map-marker"></i><span>80 Y Moan Ênuôi,Tân Lợi,Thành phố Buôn Ma Thuật,Đăk
                                     Lăk</span></p>
 
 
@@ -129,8 +129,7 @@
     </div>
     <div class="footer-bottom">
         <div class="container copyright">
-            <p>Copyright &copy; 2023 Trường Đức - Thiết bị điện thông minh. <a target='_blank'
-                    href='http://kythuatdientruongduc.com/'>Powered
+            <p>Copyright &copy; 2023 Trường Đức - Thiết bị điện thông minh. <a target='_blank' href='http://kythuatdientruongduc.com/'>Powered
                     by Truong Duc</a>.</p>
 
         </div>
