@@ -9,8 +9,7 @@
                         <li id="cart-target" class="cart">
                             <a href="/carts" class="cart " title="Giỏ hàng">
                                 <span class="fa fa-shopping-cart"></span>
-                                <span
-                                    id="cart-count">{{ !is_null(\Session::get('carts')) ? count(\Session::get('carts')) : 0 }}</span>
+                                <span id="cart-count">{{ !is_null(\Session::get('carts')) ? count(\Session::get('carts')) : 0 }}</span>
                             </a>
                         </li>
 
@@ -30,180 +29,33 @@
                     </li>
 
 
-
+                    @foreach($category as $item)
                     <li class="dropdown">
-                        <a href="/sanpham/Sản phẩm" title="Sản phẩm" class="">
-                            <span>Sản phẩm</span>
+                        <a href="/sanpham/{{$item->slug}}/{{$item->id}}" title="Sản phẩm" class="">
+                            <span>{{$item->name}}</span>
                         </a>
+
+                        @if($item->categoryChildrent && $item->categoryChildrent->count() > 0)
                         <ul class="dropdown-menu" role="menu">
-
+                            @foreach($item->categoryChildrent as $children)
                             <li>
-                                <a href="/sanpham/Tất cả sản phẩm" title="Tất cả sản phẩm">Tất cả sản
-                                    phẩm</a>
-
-                            </li>
-
-
-                            <li>
-                                <a href="/sanpham/Camera" title="Camera">Camera</a>
-
+                                <a href="/sanpham/{{$children->slug}}/{{$children->id}}" title="Tất cả sản phẩm">{{$children->name}}</a>
+                                @if($children->categoryChildrent && $children->categoryChildrent->count() > 0)
                                 <ul class="dropdown-menu">
-
+                                    @foreach($children->categoryChildrent as $childrenGrand)
                                     <li>
-                                        <a href="/sanpham/Camera Ip" title="Camera Ip">Ip</a>
+                                        <a href="/sanpham/{{$childrenGrand->name}}/{{$childrenGrand->id}}" title="Camera giao thông">{{$childrenGrand->name}}</a>
                                     </li>
-
-                                    <li>
-                                        <a href="/sanpham/Camera Analog" title="Camera Analog">Analog</a>
-                                    </li>
-
+                                    @endforeach
                                 </ul>
-
+                                @endif
                             </li>
-
-
-
-                            <li>
-                                <a href="/sanpham/Đầu ghi" title="Đầu ghi">Đầu ghi</a>
-
-                                <ul class="dropdown-menu">
-
-                                    <li>
-                                        <a href="/sanpham/Đầu ghi Ip" title="Đầu ghi Ip">IP</a>
-                                    </li>
-
-                                    <li>
-                                        <a href="/sanpham/Đầu ghi Analog" title="Đầu ghi Analog">
-                                            Analog
-                                        </a>
-                                    </li>
-
-
-
-
-
-                                </ul>
-
-                            </li>
-
-
-                            <li>
-                                <a href="/sanpham/Phụ kiện" title="Phụ kiện">Phụ kiện</a>
-
-                                <ul class="dropdown-menu">
-
-                                    <li>
-                                        <a href="/sanpham/Cáp" title="Cáp">Cáp</a>
-                                    </li>
-
-                                    <li>
-                                        <a href="/sanpham/Nguồn" title="Nguồn">
-                                            Nguồn
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="/sanpham/Chân đế" title="Chân đế">
-                                            Chân đế
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="/sanpham/Phụ kiện khác" title="Phụ kiện khác">
-                                            Phụ kiện khác
-                                        </a>
-                                    </li>
-
-
-                                </ul>
-
-                            </li>
-
-                            <li>
-                                <a href="/sanpham/Sản phẩm khác" title="Sản phẩm khác">Sản phẩm khác</a>
-
-                                <ul class="dropdown-menu">
-
-                                    <li>
-                                        <a href="/sanpham/Chuông cửa màn hình" title="Chuông cửa màn hình">Chuông cửa
-                                            màn hình</a>
-                                    </li>
-
-                                    <li>
-                                        <a href="/sanpham/Khóa thông minh" title="Khóa thông minh">
-                                            Khóa thông minh
-                                        </a>
-                                    </li>
-
-
-                                    <li>
-                                        <a href="/sanpham/Thiết bị chấm công" title="Thiết bị chấm công">
-                                            Thiết bị chấm công
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="/sanpham/Switch" title="Switch">
-                                            Switch
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="/sanpham/Màn hình test camera" title="Màn hình test camera">
-                                            Màn hình test camera
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="/sanpham/Ổ cứng" title="Ổ cứng">
-                                            Ổ cứng
-                                        </a>
-                                    </li>
-                                </ul>
-
-                            </li>
-
-                            <li>
-                                <a href="/sanpham/Sản phẩm dành cho dự án" title="Sản phẩm dành cho dự án">Sản phẩm dành
-                                    cho dự án</a>
-
-                                <ul class="dropdown-menu">
-
-                                    <li>
-                                        <a href="/sanpham/Camera giao thông" title="Camera giao thông">Camera giao
-                                            thông</a>
-                                    </li>
-
-                                    <li>
-                                        <a href="/sanpham/Camera chống cháy nổ" title="Camera chống cháy nổ">
-                                            Camera chống cháy nổ
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="/sanpham/Camera cảm biến nhiệt" title="Camera cảm biến nhiệt">
-                                            Camera cảm biến nhiệt
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="/sanpham/Server lưu trữ" title="Server lưu trữ">
-                                            Server lưu trữ
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="/sanpham/Video wall" title="Video wall">
-                                            Video wall
-                                        </a>
-                                    </li>
-                                </ul>
-
-                            </li>
-
-
+                            @endforeach
                         </ul>
+                        @endif
                     </li>
+                    @endforeach
+
 
 
 
@@ -310,8 +162,7 @@
                         <ul class="nodrop">
                             <li id="search-icon" class="drop-control">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-default dropdown-toggle icon-search"
-                                        data-toggle="dropdown" aria-expanded="false">
+                                    <button type="button" class="btn btn-default dropdown-toggle icon-search" data-toggle="dropdown" aria-expanded="false">
 
                                     </button>
                                     <div class="dropdown-menu" role="menu">
