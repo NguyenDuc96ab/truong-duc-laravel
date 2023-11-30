@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Http\Services\Cart\CartService;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -42,10 +43,13 @@ class CardController extends Controller
                 $product->firstImage = $firstImage;
             }
         }
+
+        $category = Category::where('parent_id', 0)->get();
         return view('Web.cart.list', [
             'title' => 'Giỏ hàng',
             'productGH' => $producGH,
-            'carts' => Session::get('carts'), // lấy sản phẩm trong carts lưu trong Session
+            'carts' => Session::get('carts'), // lấy sản phẩm trong carts lưu trong Session,
+            'category' => $category
         ]);
     }
 

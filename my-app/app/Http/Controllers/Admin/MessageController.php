@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Services\Message\MessageService;
+use App\Models\Category;
 use App\Models\Message;
 use Illuminate\Http\Request;
 
@@ -17,8 +18,10 @@ class MessageController extends Controller
     public function weblienhe()
     {
 
-
-        return view('Web.message.view', []);
+        $category = Category::where('parent_id', 0)->get();
+        return view('Web.message.view', [
+            'category' => $category
+        ]);
     }
 
 
