@@ -39,20 +39,24 @@
                                 <td class="image">
                                     <div class="product_image">
                                         @if ($productGH->firstImage)
-                                        <a href="/sanpham/detail/{{$productGH->id}}-{{ Str::slug($productGH->name, '-') }}.html">
+                                        <a
+                                            href="/sanpham/detail/{{$productGH->id}}-{{ Str::slug($productGH->name, '-') }}.html">
                                             <img src="{{ "/images/" . $productGH->firstImage->name }}" />
                                         </a>
                                         @endif
                                     </div>
                                 </td>
                                 <td class="item">
-                                    <a href="/sanpham/detail/{{$productGH->id}}-{{ Str::slug($productGH->name, '-') }}.html">
+                                    <a
+                                        href="/sanpham/detail/{{$productGH->id}}-{{ Str::slug($productGH->name, '-') }}.html">
                                         <strong>{{$productGH->name}}</strong>
 
                                     </a>
                                 </td>
                                 <td class="qty">
-                                    <input type="number" min="1" name="quantity[{{$productGH->id}}]" value="{{$carts[$productGH->id]}}" onfocus="this.select();" class="tc item-quantity" />
+                                    <input type="number" min="1" name="quantity[{{$productGH->id}}]"
+                                        value="{{$carts[$productGH->id]}}" onfocus="this.select();"
+                                        class="tc item-quantity" />
                                 </td>
                                 <td class="price"> {{number_format($price,0,'','.')}} đ</td>
                                 <td class="remove">
@@ -88,14 +92,15 @@
                                     toán
                                 </a>
                             </button>
-                            <button type="submit" class="button-default" name="update" value="update-cart" formaction="/update-cart">Cập
+                            <button type="submit" class="button-default" name="update" value="update-cart"
+                                formaction="/update-cart">Cập
                                 nhật</button>
                         </div>
                         @csrf
                     </div>
                     <div class="col-md-12">
 
-                        <a href="/sanpham/Tất cả sản phẩm">
+                        <a href="/sanpham/{{$category[0]->slug}}/{{$category[0]->id}}">
                             <i class="fa fa-reply"></i> Tiếp tục mua hàng</a>
                     </div>
 

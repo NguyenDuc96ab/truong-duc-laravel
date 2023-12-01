@@ -47,8 +47,10 @@
 
                                 @if ($product->firstImage)
 
-                                <a href="/detail/{{$product->id}}-{{ Str::slug($product->name, '-') }}.html" title="{{$product->firstImage->name}}">
-                                    <img alt="{{$product->firstImage->name}}" src="{{ "/images/" . $product->firstImage->name }}">
+                                <a href="/detail/{{$product->id}}-{{ Str::slug($product->name, '-') }}.html"
+                                    title="{{$product->firstImage->name}}">
+                                    <img alt="{{$product->firstImage->name}}"
+                                        src="{{ "/images/" . $product->firstImage->name }}">
                                 </a>
 
                                 @endif
@@ -61,15 +63,21 @@
                                 <p class="pro-price"> {{number_format($product->price,0,'','.')}} đ </p>
                                 <p class="pro-price-del text-left">
                                 </p>
-                                <h3 class="pro-name"><a href="/detail/{{$product->id}}-{{ Str::slug($product->name, '-') }}.html" title="{{$product->name}}">{{$product->name}} </a></h3>
-                                <input id="quantity" type="hidden" name="quantity" min="1" value="1" class="tc item-quantity" />
+                                <h3 class="pro-name"><a
+                                        href="/detail/{{$product->id}}-{{ Str::slug($product->name, '-') }}.html"
+                                        title="{{$product->name}}">{{$product->name}} </a></h3>
+                                <input id="quantity" type="hidden" name="quantity" min="1" value="1"
+                                    class="tc item-quantity" />
                                 <input type="hidden" name="id" value="{{$product->id}}">
                                 <div class="add-cart">
 
 
                                     <input type="hidden" name="id" value="{{$product->id}}">
-                                    <button type="submit" title="{{$product->name}}" style="border: none; background: none; padding: 0; margin: 0;">
-                                        <img class="add-cart-img" src="https://theme.hstatic.net/1000162838/1000469515/14/add-cart.png?v=657" alt="cart">
+                                    <button type="submit" title="{{$product->name}}"
+                                        style="border: none; background: none; padding: 0; margin: 0;">
+                                        <img class="add-cart-img"
+                                            src="https://theme.hstatic.net/1000162838/1000469515/14/add-cart.png?v=657"
+                                            alt="cart">
                                     </button>
 
 
@@ -90,12 +98,13 @@
                 </form>
                 @endforeach
             </div>
-            <!-- <div class="row">
+            <div class="row">
                 <div class="col-lg-12 pull-center">
-                    <a class="btn btn-readmore" href="/sanpham/{{$product->name}}/{{$product->category_id}}" role="button">Xem
+                    <a class="btn btn-readmore" href="/sanpham/{{$category[0]->slug}}/{{$category[0]->id}}"
+                        role=" button">Xem
                         thêm </a>
                 </div>
-            </div> -->
+            </div>
         </div>
 
 
@@ -114,8 +123,10 @@
                         <div class="product-block product-resize">
                             <div class="product-img image-resize view view-third clearfix">
 
-                                <a href="/sanpham/detail/{{$product['name']->id}}-{{ Str::slug($product['name']->name, '-') }}.html" title="{{$product['images']->name }}">
-                                    <img alt="{{$product['images']->name}}" src="{{ "/images/" . $product['images']->name }}" />
+                                <a href="/sanpham/detail/{{$product['name']->id}}-{{ Str::slug($product['name']->name, '-') }}.html"
+                                    title="{{$product['images']->name }}">
+                                    <img alt="{{$product['images']->name}}"
+                                        src="{{ "/images/" . $product['images']->name }}" />
                                 </a>
 
                             </div>
@@ -130,19 +141,24 @@
                                 <p class="pro-price-del text-left">
                                     </h3>
                                 <h3 class="pro-name">
-                                    <a href="/sanpham/detail/{{$product['name']->id}}-{{ Str::slug($product['name']->name, '-') }}.html" title="aaa">
+                                    <a href="/sanpham/detail/{{$product['name']->id}}-{{ Str::slug($product['name']->name, '-') }}.html"
+                                        title="aaa">
                                         {{ $product['name']->name }}
                                     </a>
                                 </h3>
 
-                                <input id="quantity" type="hidden" name="quantity" min="1" value="1" class="tc item-quantity" />
+                                <input id="quantity" type="hidden" name="quantity" min="1" value="1"
+                                    class="tc item-quantity" />
 
                                 <div class="add-cart">
 
 
 
-                                    <button type="submit" title="{{$product['name']->name }}" style="border: none; background: none; padding: 0; margin: 0;">
-                                        <img class="add-cart-img" src="https://theme.hstatic.net/1000162838/1000469515/14/add-cart.png?v=657" alt="cart">
+                                    <button type="submit" title="{{$product['name']->name }}"
+                                        style="border: none; background: none; padding: 0; margin: 0;">
+                                        <img class="add-cart-img"
+                                            src="https://theme.hstatic.net/1000162838/1000469515/14/add-cart.png?v=657"
+                                            alt="cart">
                                     </button>
 
 
@@ -189,8 +205,11 @@
                         <div class="product-block product-resize">
                             <div class="product-img image-resize view view-third clearfix">
                                 @if ($tuya->firstImage)
-                                <a href="/detail/{{ $tuya->id}}-{{ Str::slug( $tuya->name, '-') }}.html" title="{{$tuya->firstImage->name}}">
-                                    <img alt="{{$tuya->firstImage->name}}" src="{{ "/images/" . $tuya->firstImage->name }}" alt="{{$tuya->firstImage->name}}" />
+                                <a href="/detail/{{ $tuya->id}}-{{ Str::slug( $tuya->name, '-') }}.html"
+                                    title="{{$tuya->firstImage->name}}">
+                                    <img alt="{{$tuya->firstImage->name}}"
+                                        src="{{ "/images/" . $tuya->firstImage->name }}"
+                                        alt="{{$tuya->firstImage->name}}" />
                                 </a>
                                 @endif
                             </div>
@@ -203,15 +222,21 @@
                                 </p>
                                 <p class="pro-price-del text-left">
                                     </h3>
-                                <h3 class="pro-name"><a href="/detail/{{ $tuya->id}}-{{ Str::slug( $tuya->name, '-') }}.html" title="{{$tuya->name}}">{{$tuya->name}} </a></h3>
+                                <h3 class="pro-name"><a
+                                        href="/detail/{{ $tuya->id}}-{{ Str::slug( $tuya->name, '-') }}.html"
+                                        title="{{$tuya->name}}">{{$tuya->name}} </a></h3>
 
-                                <input id="quantity" type="hidden" name="quantity" min="1" value="1" class="tc item-quantity" />
+                                <input id="quantity" type="hidden" name="quantity" min="1" value="1"
+                                    class="tc item-quantity" />
                                 <div class="add-cart">
 
 
 
-                                    <button type="submit" title="{{$tuya->name }}" style="border: none; background: none; padding: 0; margin: 0;">
-                                        <img class="add-cart-img" src="https://theme.hstatic.net/1000162838/1000469515/14/add-cart.png?v=657" alt="cart">
+                                    <button type="submit" title="{{$tuya->name }}"
+                                        style="border: none; background: none; padding: 0; margin: 0;">
+                                        <img class="add-cart-img"
+                                            src="https://theme.hstatic.net/1000162838/1000469515/14/add-cart.png?v=657"
+                                            alt="cart">
                                     </button>
 
 
@@ -233,7 +258,8 @@
                 <div class="col-lg-12 pull-center">
 
 
-                    <a class="btn btn-readmore" href="/sanpham/{{$tuya->name}}/{{$tuya->category_id}}" role="button">Xem
+                    <a class="btn btn-readmore" href="/sanpham/Điện công nghiệp/{{$tuya->category_id}}"
+                        role="button">Xem
                         thêm </a>
 
 

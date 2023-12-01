@@ -94,7 +94,7 @@ class WebMainController extends Controller
             'newss' => $this->newService->getNewPost(),
             'tuya' => $tuya,
             'topseling' => $productData,
-            'category' => $category
+            'category' => $category,
         ]);
     }
 
@@ -104,8 +104,12 @@ class WebMainController extends Controller
         // dd($sortBy);
         $displaySlug = $slug;
         //dd($displaySlug);
+        if ($slug == 'Sản phẩm') {
+            $query = Product::query();
+        } else {
+            $query = Product::query()->where('category_id', $id);
+        }
 
-        $query = Product::query()->where('category_id', $id);
 
 
         // Thêm điều kiện active bằng 1 vào query
@@ -149,10 +153,11 @@ class WebMainController extends Controller
         }
 
         $category = Category::where('parent_id', 0)->get();
+
         return view('Web.product.product-list', [
             'products' => $products,
             'displaySlug' => $displaySlug,
-            'category' => $category
+            'category' => $category,
             // 'image' =>  $firstImage,
         ]);
     }

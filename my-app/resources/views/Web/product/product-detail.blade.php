@@ -241,9 +241,9 @@
                         <div class="pro-recom-fake">
                             <div id="owl-recom-fake" class="owl-carousel owl-theme">
 
-                                @foreach($smartswitch as $item)
-                                <div class="item">
 
+                                <div class="item">
+                                    @foreach($smartswitch as $item)
 
                                     <div class="pro-loop">
                                         <div class="product-block product-resize">
@@ -286,10 +286,10 @@
                                         </div>
                                     </div>
 
-
+                                    @endforeach
 
                                 </div>
-                                @endforeach
+
                             </div>
                         </div>
 
