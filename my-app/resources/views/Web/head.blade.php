@@ -72,8 +72,8 @@
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Kỹ thuật điện Trường Đức" />
-    <meta property="og:image" content="{{ asset('logo-05.png') }}" />
-    <meta property="og:image:secure_url" content="{{ asset('logo-05.png') }}" />
+    <meta property="og:image" content="{{ asset('/logo-05.png') }}" />
+    <meta property="og:image:secure_url" content="{{ asset('/logo-05.png') }}" />
 
 
 
