@@ -4,8 +4,7 @@
     </script>
     <meta name="google-site-verification" content="HfROvt1w4yTDYnl06wno6qW5J8a8-sGip9K0y0zmycg" />
 
-    <link rel="shortcut icon" href="https://theme.hstatic.net/1000162838/1000469515/14/favicon.png?v=657"
-        type="image/png" />
+    <link rel="shortcut icon" href="{{ asset('/logo-05.png') }}" type="image/png" />
     <meta charset="utf-8" />
     <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' /><![endif]-->
     <title>
