@@ -4,7 +4,7 @@
 
         <h1>
             <a href="/">
-                <img src="{{ asset('logo-05.png') }}" alt="Trường Đức - Thiết bị điện thông minh" class="img-responsive" />
+                <img src="{{ asset('logo-truongduc.png') }}" alt="Trường Đức - Thiết bị điện thông minh" class="img-responsive" />
             </a>
         </h1>
 
