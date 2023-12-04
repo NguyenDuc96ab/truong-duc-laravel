@@ -19,241 +19,266 @@
     <div class="flex-controls"></div>
 </div>
 
-<section id="content" class="clearfix container">
+<section id="content">
 
-
-
-
-
-    @include('Web.sidebar')
 
     <h1 class="hidden">Tấn Phong - Thiết bị điện thông minh</h1>
 
-    <div class="col-md-9 col-sm-12 col-xs-12">
-
-        <div class="title-line">
-            <h3>tất cả sản phẩm</h3>
-        </div>
-        <div class="main-content">
-
-            <!-- Sản phẩm trang chủ -->
-            <div class="row content-product-list products-resize">
-                @foreach ($product as $product)
-                <form action="/add-cart" method="POST">
-                    <div class="col-md-3 col-sm-6 col-xs-6 pro-loop">
-
-                        <div class="product-block product-resize fixheight" style="height: 421px;">
-                            <div class="product-img image-resize view view-third clearfix" style="height: 218px;">
-
-                                @if ($product->firstImage)
-
-                                <a href="/detail/{{$product->id}}-{{ Str::slug($product->name, '-') }}.html" title="{{$product->firstImage->name}}">
-                                    <img alt="{{$product->firstImage->name}}" src="{{ "/images/" . $product->firstImage->name }}">
-                                </a>
-
-                                @endif
-                            </div>
-
-                            <div class="product-detail clearfix">
-
-
-                                <!-- sử dụng pull-left -->
-                                <p class="pro-price"> {{number_format($product->price,0,'','.')}} đ </p>
-                                <p class="pro-price-del text-left">
-                                </p>
-                                <h3 class="pro-name"><a href="/detail/{{$product->id}}-{{ Str::slug($product->name, '-') }}.html" title="{{$product->name}}">{{$product->name}} </a></h3>
-                                <input id="quantity" type="hidden" name="quantity" min="1" value="1" class="tc item-quantity" />
-                                <input type="hidden" name="id" value="{{$product->id}}">
-                                <div class="add-cart">
-
-
-                                    <input type="hidden" name="id" value="{{$product->id}}">
-                                    <button type="submit" title="{{$product->name}}" style="border: none; background: none; padding: 0; margin: 0;">
-                                        <img class="add-cart-img" src="https://theme.hstatic.net/1000162838/1000469515/14/add-cart.png?v=657" alt="cart">
-                                    </button>
-
-
-
-
-                                    <input type="hidden" name="product_id" value="{{$product->id}}">
-
-                                </div>
-
-
-                            </div>
-                        </div>
-
-
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Cột 1 -->
+            <div class="col-md-3 col-sm-12">
+                <div class="container">
+                    <div class="row">
+                        @include('Web.sidebar')
                     </div>
-                    @csrf
-
-                </form>
-                @endforeach
-            </div>
-            <div class="row">
-                <div class="col-lg-12 pull-center">
-                    <a class="btn btn-readmore" href="/sanpham/{{$category[0]->slug}}/{{$category[0]->id}}" role=" button">Xem
-                        thêm </a>
                 </div>
-            </div>
-        </div>
 
-
-        <div class="product-list clearfix ">
-            <div class="title-line">
-                <h3>SẢN PHẨM BÁN CHẠY</h3>
             </div>
 
-            <div class="row content-product-list products-resize">
-                @foreach ($topseling as $product)
-                <div class="col-md-3 col-sm-6 col-xs-6 pro-loop">
-                    <!--sử dụng end -->
+            <!-- Cột 2 -->
+            <div class="col-md-6 col-sm-12">
+                <!-- Cột chứa sản phẩm trang chủ -->
+                <div class="main-content">
+                    <div class="title-line">
+                        <h3>tất cả sản phẩm</h3>
+                    </div>
+                    <!-- Sản phẩm trang chủ -->
+                    <div class="row content-product-list products-resize">
+                        @foreach ($product as $product)
+                        <form action="/add-cart" method="POST">
+                            <div class="col-md-3 col-sm-6 col-xs-6 pro-loop">
 
-                    <form action="/add-cart" method="POST">
+                                <div class="product-block product-resize fixheight" style="height: 421px;">
+                                    <div class="product-img image-resize view view-third clearfix" style="height: 218px;">
 
-                        <div class="product-block product-resize">
-                            <div class="product-img image-resize view view-third clearfix">
+                                        @if ($product->firstImage)
 
-                                <a href="/detail/{{$product['name']->id}}-{{ Str::slug($product['name']->name, '-') }}.html" title="{{$product['images']->name }}">
-                                    <img alt="{{$product['images']->name}}" src="{{ "/images/" . $product['images']->name }}" />
-                                </a>
+                                        <a href="/detail/{{$product->id}}-{{ Str::slug($product->name, '-') }}.html" title="{{$product->firstImage->name}}">
+                                            <img alt="{{$product->firstImage->name}}" src="{{ "/images/" . $product->firstImage->name }}">
+                                        </a>
 
-                            </div>
+                                        @endif
+                                    </div>
 
-                            <div class="product-detail clearfix">
-
-
-                                <!-- sử dụng pull-left -->
-                                <p class="pro-price"> {{number_format($product['name']->price,0,'','.')}}
-                                    đ
-                                </p>
-                                <p class="pro-price-del text-left">
-                                    </h3>
-                                <h3 class="pro-name">
-                                    <a href="/detail/{{$product['name']->id}}-{{ Str::slug($product['name']->name, '-') }}.html" title="aaa">
-                                        {{ $product['name']->name }}
-                                    </a>
-                                </h3>
-
-                                <input id="quantity" type="hidden" name="quantity" min="1" value="1" class="tc item-quantity" />
-
-                                <div class="add-cart">
+                                    <div class="product-detail clearfix">
 
 
+                                        <!-- sử dụng pull-left -->
+                                        <p class="pro-price"> {{number_format($product->price,0,'','.')}} đ </p>
+                                        <p class="pro-price-del text-left">
+                                        </p>
+                                        <h3 class="pro-name"><a href="/detail/{{$product->id}}-{{ Str::slug($product->name, '-') }}.html" title="{{$product->name}}">{{$product->name}} </a></h3>
+                                        <input id="quantity" type="hidden" name="quantity" min="1" value="1" class="tc item-quantity" />
+                                        <input type="hidden" name="id" value="{{$product->id}}">
+                                        <div class="add-cart">
 
-                                    <button type="submit" title="{{$product['name']->name }}" style="border: none; background: none; padding: 0; margin: 0;">
-                                        <img class="add-cart-img" src="https://theme.hstatic.net/1000162838/1000469515/14/add-cart.png?v=657" alt="cart">
-                                    </button>
+
+                                            <input type="hidden" name="id" value="{{$product->id}}">
+                                            <button type="submit" title="{{$product->name}}" style="border: none; background: none; padding: 0; margin: 0;">
+                                                <img class="add-cart-img" src="https://theme.hstatic.net/1000162838/1000469515/14/add-cart.png?v=657" alt="cart">
+                                            </button>
 
 
 
 
-                                    <input type="hidden" name="product_id" value="{{$product['name']->id}}">
+                                            <input type="hidden" name="product_id" value="{{$product->id}}">
 
+                                        </div>
+
+
+                                    </div>
                                 </div>
 
+
                             </div>
+                            @csrf
+
+                        </form>
+                        @endforeach
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 pull-center">
+                            <a class="btn btn-readmore" href="/sanpham/{{$category[0]->slug}}/{{$category[0]->id}}" role=" button">Xem
+                                thêm </a>
                         </div>
-                        @csrf
-                    </form>
-
+                    </div>
                 </div>
-                @endforeach
-            </div>
-            <!-- <div class="row">
-                <div class="col-lg-12 pull-center">
+
+                <div class="product-list clearfix ">
+                    <div class="title-line">
+                        <h3>SẢN PHẨM BÁN CHẠY</h3>
+                    </div>
+
+                    <div class="row content-product-list products-resize">
+                        @foreach ($topseling as $product)
+                        <div class="col-md-3 col-sm-6 col-xs-6 pro-loop">
+                            <!--sử dụng end -->
+
+                            <form action="/add-cart" method="POST">
+
+                                <div class="product-block product-resize">
+                                    <div class="product-img image-resize view view-third clearfix">
+
+                                        <a href="/detail/{{$product['name']->id}}-{{ Str::slug($product['name']->name, '-') }}.html" title="{{$product['images']->name }}">
+                                            <img alt="{{$product['images']->name}}" src="{{ "/images/" . $product['images']->name }}" />
+                                        </a>
+
+                                    </div>
+
+                                    <div class="product-detail clearfix">
 
 
-                    <a class="btn btn-readmore" href="/sanpham/Tấm pin năng lượng mặt trời" role="button">Xem
-                        thêm </a>
+                                        <!-- sử dụng pull-left -->
+                                        <p class="pro-price"> {{number_format($product['name']->price,0,'','.')}}
+                                            đ
+                                        </p>
+                                        <p class="pro-price-del text-left">
+                                            </h3>
+                                        <h3 class="pro-name">
+                                            <a href="/detail/{{$product['name']->id}}-{{ Str::slug($product['name']->name, '-') }}.html" title="aaa">
+                                                {{ $product['name']->name }}
+                                            </a>
+                                        </h3>
 
+                                        <input id="quantity" type="hidden" name="quantity" min="1" value="1" class="tc item-quantity" />
 
-                </div>
-            </div> -->
-        </div>
-
-
-
-        <div class="product-list clearfix ">
-            <div class="title-line">
-                <h3>ĐIỆN CÔNG NGHIỆP</h3>
-            </div>
-
-            <div class="row content-product-list products-resize">
-                @foreach($tuya as $tuya)
-                <div class="col-md-3 col-sm-6 col-xs-6 pro-loop">
-                    <!--sử dụng end -->
-
-                    <form action="/add-cart" method="POST">
-
-                        <div class="product-block product-resize">
-                            <div class="product-img image-resize view view-third clearfix">
-                                @if ($tuya->firstImage)
-                                <a href="/detail/{{ $tuya->id}}-{{ Str::slug( $tuya->name, '-') }}.html" title="{{$tuya->firstImage->name}}">
-                                    <img alt="{{$tuya->firstImage->name}}" src="{{ "/images/" . $tuya->firstImage->name }}" alt="{{$tuya->firstImage->name}}" />
-                                </a>
-                                @endif
-                            </div>
-
-                            <div class="product-detail clearfix">
-
-
-                                <!-- sử dụng pull-left -->
-                                <p class="pro-price">{{number_format($tuya->price,0,'','.')}} đ
-                                </p>
-                                <p class="pro-price-del text-left">
-                                    </h3>
-                                <h3 class="pro-name"><a href="/detail/{{ $tuya->id}}-{{ Str::slug( $tuya->name, '-') }}.html" title="{{$tuya->name}}">{{$tuya->name}} </a></h3>
-
-                                <input id="quantity" type="hidden" name="quantity" min="1" value="1" class="tc item-quantity" />
-                                <div class="add-cart">
+                                        <div class="add-cart">
 
 
 
-                                    <button type="submit" title="{{$tuya->name }}" style="border: none; background: none; padding: 0; margin: 0;">
-                                        <img class="add-cart-img" src="https://theme.hstatic.net/1000162838/1000469515/14/add-cart.png?v=657" alt="cart">
-                                    </button>
+                                            <button type="submit" title="{{$product['name']->name }}" style="border: none; background: none; padding: 0; margin: 0;">
+                                                <img class="add-cart-img" src="https://theme.hstatic.net/1000162838/1000469515/14/add-cart.png?v=657" alt="cart">
+                                            </button>
 
 
 
 
-                                    <input type="hidden" name="product_id" value="{{$tuya->id}}">
+                                            <input type="hidden" name="product_id" value="{{$product['name']->id}}">
 
+                                        </div>
+
+                                    </div>
                                 </div>
+                                @csrf
+                            </form>
 
-                            </div>
                         </div>
-                        @csrf
-                    </form>
+                        @endforeach
+                    </div>
 
                 </div>
-                @endforeach
+
+                <div class="product-list clearfix ">
+                    <div class="title-line">
+                        <h3>ĐIỆN CÔNG NGHIỆP</h3>
+                    </div>
+
+                    <div class="row content-product-list products-resize">
+                        @foreach($tuya as $tuya)
+                        <div class="col-md-3 col-sm-6 col-xs-6 pro-loop">
+                            <!--sử dụng end -->
+
+                            <form action="/add-cart" method="POST">
+
+                                <div class="product-block product-resize">
+                                    <div class="product-img image-resize view view-third clearfix">
+                                        @if ($tuya->firstImage)
+                                        <a href="/detail/{{ $tuya->id}}-{{ Str::slug( $tuya->name, '-') }}.html" title="{{$tuya->firstImage->name}}">
+                                            <img alt="{{$tuya->firstImage->name}}" src="{{ "/images/" . $tuya->firstImage->name }}" alt="{{$tuya->firstImage->name}}" />
+                                        </a>
+                                        @endif
+                                    </div>
+
+                                    <div class="product-detail clearfix">
+
+
+                                        <!-- sử dụng pull-left -->
+                                        <p class="pro-price">{{number_format($tuya->price,0,'','.')}} đ
+                                        </p>
+                                        <p class="pro-price-del text-left">
+                                            </h3>
+                                        <h3 class="pro-name"><a href="/detail/{{ $tuya->id}}-{{ Str::slug( $tuya->name, '-') }}.html" title="{{$tuya->name}}">{{$tuya->name}} </a></h3>
+
+                                        <input id="quantity" type="hidden" name="quantity" min="1" value="1" class="tc item-quantity" />
+                                        <div class="add-cart">
+
+
+
+                                            <button type="submit" title="{{$tuya->name }}" style="border: none; background: none; padding: 0; margin: 0;">
+                                                <img class="add-cart-img" src="https://theme.hstatic.net/1000162838/1000469515/14/add-cart.png?v=657" alt="cart">
+                                            </button>
+
+
+
+
+                                            <input type="hidden" name="product_id" value="{{$tuya->id}}">
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                @csrf
+                            </form>
+
+                        </div>
+                        @endforeach
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 pull-center">
+
+
+                            <a class="btn btn-readmore" href="/sanpham/Điện công nghiệp/{{$tuya->category_id}}" role="button">Xem
+                                thêm </a>
+
+
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <div class="row">
-                <div class="col-lg-12 pull-center">
 
+            <!-- Cột 3 -->
+            <div class="col-md-3 col-sm-12">
+                <!-- Cột chứa nội dung điện công nghiệp -->
+                <div class="product-list clearfix">
+                    <div class="news-latest list-group">
+                        <span class="list-group-item active">
+                            Bài viết mới nhất
+                        </span>
+                        @if($newss)
+                        @foreach($newss as $new)
+                        <div class="article">
 
-                    <a class="btn btn-readmore" href="/sanpham/Điện công nghiệp/{{$tuya->category_id}}" role="button">Xem
-                        thêm </a>
+                            <div class="col-ld-3 col-md-3 col-sm-4 col-xs-4">
+                                <a href="/tintuc/detail/{{$new->id}}-{{ Str::slug($new->name, '-') }}.html"><img src="{{ "/storage/" . $new->thumb }}" alt="{{$new->name}}" /></a>
+                            </div>
 
-
+                            <div class="post-content col-lg-9 col-md-9 col-sm-8 col-xs-8 ">
+                                <a href="/tintuc/detail/{{$new->id}}-{{ Str::slug($new->name, '-') }}.html">{{$new->name}}</a><span class="date"> <i class="time-date"></i>{{$new->date}}</span>
+                            </div>
+                        </div>
+                        @endforeach
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
 
 
-        <!-- End sản phẩm trang chủ -->
-    </div>
-    <!-- Content-->
-    </div>
 
 
 
 </section>
 
+
+
+
+
 <!--Begin: Bài viết mới nhất-->
 
-<div class="post_new" style="clear:both;">
+<!-- <div class="post_new" style="clear:both;">
     <div class="container">
         <div class="row">
             <div class="title-line">
@@ -279,7 +304,7 @@
 
         </div>
     </div>
-</div>
+</div> -->
 
 <!--End: Bài viết mới nhất-->
 

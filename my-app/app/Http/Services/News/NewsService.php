@@ -27,6 +27,12 @@ class NewsService
     {
         return News::orderByDesc('date')->take(4)->get();
     }
+
+
+    public function getNewPostv2()
+    {
+        return News::orderByDesc('date')->take(15)->get();
+    }
     public function create($request)
     {
         try {

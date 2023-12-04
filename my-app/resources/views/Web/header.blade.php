@@ -30,14 +30,14 @@
     </div>
 
 
-    <div class="phone-header col-md-3 col-sm-12 col-xs-12 pull-right">
-        <span>
-            Tư vấn mua hàng online
-        </span><br />
+    <div class="phone-header col-md-3 col-sm-12 col-xs-12 pull-right" id="phoneHeader" style="display: none;">
+        <span>Tư vấn</span><br />
         <a href="tel:0989 168 262">
             <i class="fa fa-mobile" aria-hidden="true" style="font-size: 25px;"></i> 0989 168 262
         </a>
     </div>
+
+
 
 </header>
 
@@ -58,4 +58,25 @@
             window.open(searchUrl, '_blank');
         }
     });
+</script>
+
+<script>
+    // Chờ cho tất cả nội dung được load xong trước khi kiểm tra kích thước màn hình
+    window.onload = function() {
+        checkScreenSize();
+
+        // Kích thước màn hình thay đổi
+        window.onresize = checkScreenSize;
+    };
+
+    function checkScreenSize() {
+        var phoneHeader = document.getElementById('phoneHeader');
+
+        // Kiểm tra nếu kích thước màn hình nhỏ hơn một ngưỡng nào đó (ví dụ: 768px)
+        if (window.innerWidth < 768) {
+            phoneHeader.style.display = 'block'; // Hiển thị phần tử
+        } else {
+            phoneHeader.style.display = 'none'; // Ẩn phần tử
+        }
+    }
 </script>

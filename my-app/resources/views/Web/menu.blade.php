@@ -9,13 +9,18 @@
                         <li id="cart-target" class="cart">
                             <a href="/carts" class="cart " title="Giỏ hàng">
                                 <span class="fa fa-shopping-cart"></span>
-                                <span id="cart-count">{{ !is_null(\Session::get('carts')) ? count(\Session::get('carts')) : 0 }}</span>
+                                <span
+                                    id="cart-count">{{ !is_null(\Session::get('carts')) ? count(\Session::get('carts')) : 0 }}</span>
                             </a>
                         </li>
 
                         <li class="user"><a href="/admin/users/login" title="Đăng nhập" class="fa fa-user"></a></li>
 
+                        </li>
+
+
                     </ul>
+
                 </div>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
@@ -39,12 +44,14 @@
                         <ul class="dropdown-menu" role="menu">
                             @foreach($item->categoryChildrent as $children)
                             <li>
-                                <a href="/sanpham/{{$children->slug}}/{{$children->id}}" title="Tất cả sản phẩm">{{$children->name}}</a>
+                                <a href="/sanpham/{{$children->slug}}/{{$children->id}}"
+                                    title="Tất cả sản phẩm">{{$children->name}}</a>
                                 @if($children->categoryChildrent && $children->categoryChildrent->count() > 0)
                                 <ul class="dropdown-menu">
                                     @foreach($children->categoryChildrent as $childrenGrand)
                                     <li>
-                                        <a href="/sanpham/{{$childrenGrand->name}}/{{$childrenGrand->id}}" title="Camera giao thông">{{$childrenGrand->name}}</a>
+                                        <a href="/sanpham/{{$childrenGrand->name}}/{{$childrenGrand->id}}"
+                                            title="Camera giao thông">{{$childrenGrand->name}}</a>
                                     </li>
                                     @endforeach
                                 </ul>
@@ -140,6 +147,8 @@
                 </ul>
 
             </div>
+
+
             <div class="hidden-xs pull-right right-menu">
                 <ul class="nav navbar-nav pull-right">
 
@@ -158,11 +167,13 @@
                         </ul>
                     </li>
 
+
                     <li class="">
                         <ul class="nodrop">
                             <li id="search-icon" class="drop-control">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-default dropdown-toggle icon-search" data-toggle="dropdown" aria-expanded="false">
+                                    <button type="button" class="btn btn-default dropdown-toggle icon-search"
+                                        data-toggle="dropdown" aria-expanded="false">
 
                                     </button>
                                     <div class="dropdown-menu" role="menu">
@@ -196,6 +207,17 @@
                         </ul>
                     </li>
 
+                    <li id="user-icon" style="display: flex; align-items: center">
+                        <ul>
+                            <li style="display: flex; flex-direction: column; align-items: center;">
+                                <a class="log" title="Đăng nhập">Liên hệ</a>
+                                <span><a href="tel:0989 168 262">
+                                        <i class="fa fa-mobile" aria-hidden="true" style="font-size: 25px;"></i> 0989
+                                        168 262
+                                    </a></span>
+                            </li>
+                        </ul>
+                    </li>
 
 
 

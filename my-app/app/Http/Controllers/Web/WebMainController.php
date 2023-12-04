@@ -91,7 +91,7 @@ class WebMainController extends Controller
             'title' => "Trang home",
             'product' => $products,
             'banner' => $this->bannerService->getByActive(),
-            'newss' => $this->newService->getNewPost(),
+            'newss' => $this->newService->getNewPostv2(),
             'tuya' => $tuya,
             'topseling' => $productData,
             'category' => $category,
@@ -140,8 +140,9 @@ class WebMainController extends Controller
         }
 
 
-
         $products = $query->paginate(36);
+
+
         foreach ($products as $product) {
             // Truy cập quan hệ imgPro của mỗi sản phẩm
             // Và làm gì đó với nó, ví dụ lấy hình ảnh đầu tiên
