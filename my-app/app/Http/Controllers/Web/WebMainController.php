@@ -85,7 +85,18 @@ class WebMainController extends Controller
                 Cart::where('product_id', $item->product_id)->delete();
             }
         }
+
+
         $category = Category::where('parent_id', 0)->get();
+        if ($category->isNotEmpty()) {
+            // Lấy ra category đầu tiên
+            $parentCategory = $category->first();
+
+            // Lấy danh sách con của category 
+            $childrenCategories = $parentCategory->categoryChildrent;
+            $slugs = $childrenCategories->pluck('slug')->toArray();
+            $desiredElement = $slugs[2];
+        }
 
         return view('Web.home', [
             'title' => "Trang home",
@@ -93,8 +104,9 @@ class WebMainController extends Controller
             'banner' => $this->bannerService->getByActive(),
             'newss' => $this->newService->getNewPostv2(),
             'tuya' => $tuya,
-            'topseling' => $productData,
+            'topseling' =>  $topseling,
             'category' => $category,
+            'link' => $desiredElement
         ]);
     }
 
