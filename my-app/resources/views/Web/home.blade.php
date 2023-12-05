@@ -50,15 +50,12 @@
                             <div class="col-md-3 col-sm-6 col-xs-6 pro-loop">
 
                                 <div class="product-block product-resize fixheight" style="height: 421px;">
-                                    <div class="product-img image-resize view view-third clearfix"
-                                        style="height: 218px;">
+                                    <div class="product-img image-resize view view-third clearfix" style="height: 218px;">
 
                                         @if ($product->firstImage)
 
-                                        <a href="/detail/{{$product->id}}-{{ Str::slug($product->name, '-') }}.html"
-                                            title="{{$product->firstImage->name}}">
-                                            <img alt="{{$product->firstImage->name}}"
-                                                src="{{ "/images/" . $product->firstImage->name }}">
+                                        <a href="/detail/{{$product->id}}-{{ Str::slug($product->name, '-') }}.html" title="{{$product->firstImage->name}}">
+                                            <img alt="{{$product->firstImage->name}}" src="{{ "/images/" . $product->firstImage->name }}">
                                         </a>
 
                                         @endif
@@ -71,21 +68,15 @@
                                         <p class="pro-price"> {{number_format($product->price,0,'','.')}} đ </p>
                                         <p class="pro-price-del text-left">
                                         </p>
-                                        <h3 class="pro-name"><a
-                                                href="/detail/{{$product->id}}-{{ Str::slug($product->name, '-') }}.html"
-                                                title="{{$product->name}}">{{$product->name}} </a></h3>
-                                        <input id="quantity" type="hidden" name="quantity" min="1" value="1"
-                                            class="tc item-quantity" />
+                                        <h3 class="pro-name"><a href="/detail/{{$product->id}}-{{ Str::slug($product->name, '-') }}.html" title="{{$product->name}}">{{$product->name}} </a></h3>
+                                        <input id="quantity" type="hidden" name="quantity" min="1" value="1" class="tc item-quantity" />
                                         <input type="hidden" name="id" value="{{$product->id}}">
                                         <div class="add-cart">
 
 
                                             <input type="hidden" name="id" value="{{$product->id}}">
-                                            <button type="submit" title="{{$product->name}}"
-                                                style="border: none; background: none; padding: 0; margin: 0;">
-                                                <img class="add-cart-img"
-                                                    src="https://theme.hstatic.net/1000162838/1000469515/14/add-cart.png?v=657"
-                                                    alt="cart">
+                                            <button type="submit" title="{{$product->name}}" style="border: none; background: none; padding: 0; margin: 0;">
+                                                <img class="add-cart-img" src="https://theme.hstatic.net/1000162838/1000469515/14/add-cart.png?v=657" alt="cart">
                                             </button>
 
 
@@ -108,8 +99,7 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-12 pull-center">
-                            <a class="btn btn-readmore" href="/sanpham/{{$category[0]->slug}}/{{$category[0]->id}}"
-                                role=" button">Xem
+                            <a class="btn btn-readmore" href="/sanpham/{{$category[0]->slug}}/{{$category[0]->id}}" role=" button">Xem
                                 thêm </a>
                         </div>
                     </div>
@@ -130,11 +120,14 @@
                                 <div class="product-block product-resize">
                                     <div class="product-img image-resize view view-third clearfix">
 
-                                        <a href="/detail/{{$product['product']->id}}-{{ Str::slug($product['product']->name, '-') }}.html"
-                                            title="{{$product['product']->name }}">
-                                            @foreach ($product['product']->imgPro as $image)
-                                            <img alt="{{$image->name}}" src="{{ "/images/" . $image->name }}" />
-                                            @endforeach
+                                        <a href="/detail/{{$product['product']->id}}-{{ Str::slug($product['product']->name, '-') }}.html" title="{{$product['product']->name }}">
+                                            @if ($product['images'])
+                                            {{-- Lấy chỉ ảnh đầu tiên --}}
+                                            @php
+                                            $firstImage = $product['images']->first();
+                                            @endphp
+                                            <img alt="{{$product['product']->name}}" src="{{ "/images/" . $firstImage->name }}" />
+                                            @endif
                                         </a>
 
                                     </div>
@@ -149,24 +142,19 @@
                                         <p class="pro-price-del text-left">
                                             </h3>
                                         <h3 class="pro-name">
-                                            <a href="/detail/{{$product['product']->id}}-{{ Str::slug($product['product']->name, '-') }}.html"
-                                                title="aaa">
+                                            <a href="/detail/{{$product['product']->id}}-{{ Str::slug($product['product']->name, '-') }}.html" title="aaa">
                                                 {{ $product['product']->name }}
                                             </a>
                                         </h3>
 
-                                        <input id="quantity" type="hidden" name="quantity" min="1" value="1"
-                                            class="tc item-quantity" />
+                                        <input id="quantity" type="hidden" name="quantity" min="1" value="1" class="tc item-quantity" />
 
                                         <div class="add-cart">
 
 
 
-                                            <button type="submit" title="{{$product['product']->name }}"
-                                                style="border: none; background: none; padding: 0; margin: 0;">
-                                                <img class="add-cart-img"
-                                                    src="https://theme.hstatic.net/1000162838/1000469515/14/add-cart.png?v=657"
-                                                    alt="cart">
+                                            <button type="submit" title="{{$product['product']->name }}" style="border: none; background: none; padding: 0; margin: 0;">
+                                                <img class="add-cart-img" src="https://theme.hstatic.net/1000162838/1000469515/14/add-cart.png?v=657" alt="cart">
                                             </button>
 
 
@@ -202,11 +190,8 @@
                                 <div class="product-block product-resize">
                                     <div class="product-img image-resize view view-third clearfix">
                                         @if ($tuya->firstImage)
-                                        <a href="/detail/{{ $tuya->id}}-{{ Str::slug( $tuya->name, '-') }}.html"
-                                            title="{{$tuya->firstImage->name}}">
-                                            <img alt="{{$tuya->firstImage->name}}"
-                                                src="{{ "/images/" . $tuya->firstImage->name }}"
-                                                alt="{{$tuya->firstImage->name}}" />
+                                        <a href="/detail/{{ $tuya->id}}-{{ Str::slug( $tuya->name, '-') }}.html" title="{{$tuya->firstImage->name}}">
+                                            <img alt="{{$tuya->firstImage->name}}" src="{{ "/images/" . $tuya->firstImage->name }}" alt="{{$tuya->firstImage->name}}" />
                                         </a>
                                         @endif
                                     </div>
@@ -219,21 +204,15 @@
                                         </p>
                                         <p class="pro-price-del text-left">
                                             </h3>
-                                        <h3 class="pro-name"><a
-                                                href="/detail/{{ $tuya->id}}-{{ Str::slug( $tuya->name, '-') }}.html"
-                                                title="{{$tuya->name}}">{{$tuya->name}} </a></h3>
+                                        <h3 class="pro-name"><a href="/detail/{{ $tuya->id}}-{{ Str::slug( $tuya->name, '-') }}.html" title="{{$tuya->name}}">{{$tuya->name}} </a></h3>
 
-                                        <input id="quantity" type="hidden" name="quantity" min="1" value="1"
-                                            class="tc item-quantity" />
+                                        <input id="quantity" type="hidden" name="quantity" min="1" value="1" class="tc item-quantity" />
                                         <div class="add-cart">
 
 
 
-                                            <button type="submit" title="{{$tuya->name }}"
-                                                style="border: none; background: none; padding: 0; margin: 0;">
-                                                <img class="add-cart-img"
-                                                    src="https://theme.hstatic.net/1000162838/1000469515/14/add-cart.png?v=657"
-                                                    alt="cart">
+                                            <button type="submit" title="{{$tuya->name }}" style="border: none; background: none; padding: 0; margin: 0;">
+                                                <img class="add-cart-img" src="https://theme.hstatic.net/1000162838/1000469515/14/add-cart.png?v=657" alt="cart">
                                             </button>
 
 
@@ -255,9 +234,7 @@
                         <div class="col-lg-12 pull-center">
 
 
-                            <a class="btn btn-readmore" href="/sanpham/{{$link}}/{{$tuya->category_id}}"
-                                role="button">Xem
-                                thêm </a>
+
 
 
                         </div>
@@ -279,14 +256,11 @@
                         <div class="article">
 
                             <div class="col-ld-3 col-md-3 col-sm-4 col-xs-4">
-                                <a href="/tintuc/detail/{{$new->id}}-{{ Str::slug($new->name, '-') }}.html"><img
-                                        src="{{ "/storage/" . $new->thumb }}" alt="{{$new->name}}" /></a>
+                                <a href="/tintuc/detail/{{$new->id}}-{{ Str::slug($new->name, '-') }}.html"><img src="{{ "/storage/" . $new->thumb }}" alt="{{$new->name}}" /></a>
                             </div>
 
                             <div class="post-content col-lg-9 col-md-9 col-sm-8 col-xs-8 ">
-                                <a
-                                    href="/tintuc/detail/{{$new->id}}-{{ Str::slug($new->name, '-') }}.html">{{$new->name}}</a><span
-                                    class="date"> <i class="time-date"></i>{{$new->date}}</span>
+                                <a href="/tintuc/detail/{{$new->id}}-{{ Str::slug($new->name, '-') }}.html">{{$new->name}}</a><span class="date"> <i class="time-date"></i>{{$new->date}}</span>
                             </div>
                         </div>
                         @endforeach
