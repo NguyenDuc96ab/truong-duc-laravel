@@ -64,7 +64,8 @@
                                             <div class="browse-tags">
 
                                                 <span class="custom-dropdown custom-dropdown--white">
-                                                    <select class="sort-by custom-dropdown__select custom-dropdown__select--white">
+                                                    <select
+                                                        class="sort-by custom-dropdown__select custom-dropdown__select--white">
                                                         <option value="manual">Bộ lọc</option>
                                                         <option value="price-ascending">Giá: Tăng dần</option>
                                                         <option value="price-descending">Giá: Giảm dần</option>
@@ -117,8 +118,11 @@
 
 
                                                         @if ($post->firstImage)
-                                                        <a href="/detail/{{$post->id}}-{{ Str::slug($post->name, '-') }}.html" title="Aptomat Cầu Dao Tổng Bảo Vệ Quá Áp, Thấp Áp, Quá Dòng, Rò Dòng Điều Khiển Qua Wifi ZigBee Tuya SHP-IO1v3">
-                                                            <img alt="{{ $post->firstImage->name}}" src="{{ "/images/" . $post->firstImage->name }}" alt="{{ $post->firstImage->name}}" />
+                                                        <a href="/detail/{{$post->id}}-{{ Str::slug($post->name, '-') }}.html"
+                                                            title="Aptomat Cầu Dao Tổng Bảo Vệ Quá Áp, Thấp Áp, Quá Dòng, Rò Dòng Điều Khiển Qua Wifi ZigBee Tuya SHP-IO1v3">
+                                                            <img alt="{{ $post->firstImage->name}}"
+                                                                src="{{ "/images/" . $post->firstImage->name }}"
+                                                                alt="{{ $post->firstImage->name}}" />
                                                         </a>
                                                         @endif
 
@@ -132,23 +136,30 @@
                                                         </p>
                                                         <p class="pro-price-del text-left">
                                                             </h3>
-                                                        <h3 class="pro-name"><a href="/detail/{{$post->id}}-{{ Str::slug($post->name, '-') }}.html" title="Aptomat Cầu Dao Tổng Bảo Vệ Quá Áp, Thấp Áp, Quá Dòng, Rò Dòng Điều Khiển Qua Wifi ZigBee Tuya SHP-IO1v3">
+                                                        <h3 class="pro-name"><a
+                                                                href="/detail/{{$post->id}}-{{ Str::slug($post->name, '-') }}.html"
+                                                                title="Aptomat Cầu Dao Tổng Bảo Vệ Quá Áp, Thấp Áp, Quá Dòng, Rò Dòng Điều Khiển Qua Wifi ZigBee Tuya SHP-IO1v3">
                                                                 {{$post->name}}
                                                             </a></h3>
 
-                                                        <input id="quantity" type="hidden" name="quantity" min="1" value="1" class="tc item-quantity" />
+                                                        <input id="quantity" type="hidden" name="quantity" min="1"
+                                                            value="1" class="tc item-quantity" />
                                                         <div class="add-cart">
 
 
 
-                                                            <button type="submit" title="{{$post->name }}" style="border: none; background: none; padding: 0; margin: 0;">
-                                                                <img class="add-cart-img" src="https://theme.hstatic.net/1000162838/1000469515/14/add-cart.png?v=657" alt="cart">
+                                                            <button type="submit" title="{{$post->name }}"
+                                                                style="border: none; background: none; padding: 0; margin: 0;">
+                                                                <img class="add-cart-img"
+                                                                    src="https://theme.hstatic.net/1000162838/1000469515/14/add-cart.png?v=657"
+                                                                    alt="cart">
                                                             </button>
 
 
 
 
-                                                            <input type="hidden" name="product_id" value="{{$post->id}}">
+                                                            <input type="hidden" name="product_id"
+                                                                value="{{$post->id}}">
 
                                                         </div>
 
@@ -170,7 +181,7 @@
                         </div>
 
                         <div class="col-md-12 ">
-                            {{ $products->links('pagination::bootstrap-4') }}
+                            {{ $products->withQueryString()->links('pagination::bootstrap-4') }}
 
                         </div>
                     </div>
@@ -178,29 +189,29 @@
 
 
                 <script>
-                    document.addEventListener('DOMContentLoaded', function() {
-                        const selectElement = document.querySelector('.sort-by');
+                document.addEventListener('DOMContentLoaded', function() {
+                    const selectElement = document.querySelector('.sort-by');
 
-                        selectElement.addEventListener('change', function(event) {
-                            event.preventDefault();
+                    selectElement.addEventListener('change', function(event) {
+                        event.preventDefault();
 
-                            const selectedValue = this.value;
+                        const selectedValue = this.value;
 
-                            const url = new URL(window.location.href);
-                            url.searchParams.set('sort_by', selectedValue);
-                            window.location.href = url.href;
-                            console.log('Selected Value:', selectedValue);
-                        });
+                        const url = new URL(window.location.href);
+                        url.searchParams.set('sort_by', selectedValue);
+                        window.location.href = url.href;
+                        console.log('Selected Value:', selectedValue);
                     });
+                });
                 </script>
 
 
                 <script>
-                    $(document).ready(function() {
-                        $('sort').on('change', function() {
-                            console.log(123);
-                        })
+                $(document).ready(function() {
+                    $('sort').on('change', function() {
+                        console.log(123);
                     })
+                })
                 </script>
 
 
