@@ -4,7 +4,7 @@
     </script>
     <meta name="google-site-verification" content="HfROvt1w4yTDYnl06wno6qW5J8a8-sGip9K0y0zmycg" />
 
-    <link rel="shortcut icon" href="{{ asset('/logo-truongducicon.ico') }}" type="image/png" />
+    <link rel="shortcut icon" href="{{ asset('/logo-favicon.ico') }}" type="image/png" />
     <meta charset="utf-8" />
     <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' /><![endif]-->
     <title>
@@ -65,8 +65,8 @@
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Kỹ thuật điện Trường Đức" />
-    <meta property="og:image" content="{{ asset('/logo-truongducicon.ico') }}" />
-    <meta property="og:image:secure_url" content="{{ asset('/logo-truongducicon.ico') }}" />
+    <meta property="og:image" content="{{ asset('/logo-favicon.ico') }}" />
+    <meta property="og:image:secure_url" content="{{ asset('/logo-favicon.ico') }}" />
 
 
 
