@@ -72,7 +72,7 @@
                         </li>
                         <li>
                             <i class="glyphicon glyphicon-envelope"></i>
-                            <span>info@truongduc.vn</span>
+                            <span>Vienthongtruongduc@gmail.com</span>
                         </li>
 
                         <li>

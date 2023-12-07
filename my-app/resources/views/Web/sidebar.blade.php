@@ -123,7 +123,7 @@
                 <p>
                     <span class="supp-name">Tư vấn Kỹ thuật</span>
                     <br>
-                    <span class="phone">094 690 00 11</span>
+                    <span class="phone">0989 168 262</span>
                 </p>
 
 
@@ -135,7 +135,7 @@
 
                 <br>
                 <p>
-                    094 690 00 11
+                    0989 168 262
                 </p>
 
             </div>

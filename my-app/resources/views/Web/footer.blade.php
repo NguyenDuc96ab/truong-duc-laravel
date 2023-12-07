@@ -102,7 +102,7 @@
                                     </a></span></p>
 
 
-                            <p><i class="fa fa-envelope-o"></i><span>info@truongduc.vn</span>
+                            <p><i class="fa fa-envelope-o"></i><span>Vienthongtruongduc@gmail.com</span>
                             </p>
 
                         </div>
