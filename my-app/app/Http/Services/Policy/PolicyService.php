@@ -63,12 +63,68 @@ class PolicyService
     public function getPostListBySlug($slug)
     {
         $postList = null;
-        $postList = Policy::where('slug', $slug)
-            ->firstOrFail();
+
+        if ($slug == 'huong-dan-mua-hang') {
+            $postList = Policy::where('slug', 'Hướng dẫn mua hàng')->firstOrFail();
+        }
+
 
         return [
             'postList' => $postList,
+        ];
+    }
 
+
+    // public function getPolicyBySlug($slug)
+    // {
+    //     $postList = null;
+
+    //     if ($slug == 'chinh-sach') {
+    //         $postList = Policy::where('slug', 'Chính sách')->firstOrFail();
+    //     } else if ($slug == 'chinh-sach-van-chuyen') {
+    //         $postList = Policy::where('slug', 'Chính sách vận chuyển')->firstOrFail();
+    //     } else if ($slug == 'chinh-sach-doi-tra') {
+    //         $postList = Policy::where('slug', 'Chính sách đổi trả')->firstOrFail();
+    //     } else if ($slug == 'chinh-sach-bao-mat') {
+    //         $postList = Policy::where('slug', 'Chính sách bảo mật')->firstOrFail();
+    //     } else if ($slug == 'chinhsachdaily') {
+    //         $postList = Policy::where('slug', 'Chính sách đại lý')->firstOrFail();
+    //     } else if ($slug == 'phuong-thuc-thanh-toan') {
+    //         $postList = Policy::where('slug', 'Phương thức thanh toán')->firstOrFail();
+    //     } else if ($slug == 'thong-tin-chuyen-khoan') {
+    //         $postList = Policy::where('slug', 'Thông tin chuyển khoản')->firstOrFail();
+    //     } else {
+    //         $postList = Policy::where('slug', 'Hướng dẫn mua hàng')->firstOrFail();
+    //     }
+
+
+    //     return [
+    //         'postList' => $postList,
+    //     ];
+    // }
+
+    public function getPolicyBySlug($slug)
+    {
+        $postList = null;
+        $policies = [
+            'chinh-sach' => 'Chính sách',
+            'chinh-sach-van-chuyen' => 'Chính sách vận chuyển',
+            'chinh-sach-doi-tra' => 'Chính sách đổi trả',
+            'chinh-sach-bao-mat' => 'Chính sách bảo mật',
+            'chinhsachdaily' => 'Chính sách đại lý',
+            'phuong-thuc-thanh-toan' => 'Phương thức thanh toán',
+            'thong-tin-chuyen-khoan' => 'Thông tin chuyển khoản',
+            'huong-dan-mua-hang' => 'Hướng dẫn mua hàng',
+        ];
+
+        // Kiểm tra xem $slug có trong mảng policies không
+        // Nếu có, sử dụng nó để truy vấn cơ sở dữ liệu
+        if (array_key_exists($slug, $policies)) {
+            $postList = Policy::where('slug', $policies[$slug])->firstOrFail();
+        }
+
+        return [
+            'postList' => $postList,
         ];
     }
 }

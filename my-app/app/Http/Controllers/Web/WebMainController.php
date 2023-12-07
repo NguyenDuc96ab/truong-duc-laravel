@@ -15,6 +15,7 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Str;
 
 class WebMainController extends Controller
 {
@@ -179,6 +180,7 @@ class WebMainController extends Controller
 
 
 
+
     public function detail($id = '', $slug = '')
     {
         // dd($id);
@@ -221,12 +223,9 @@ class WebMainController extends Controller
 
     public function chinhsach($slug)
     {
-        if (!$slug) {
-            // Nếu không có $slug, chuyển hướng đến trang 404
-            return view('Web.404-error');
-        }
-        $post = $this->policyService->getPostListBySlug($slug);
-        // dd($post);
+
+        $post = $this->policyService->getPolicyBySlug($slug);
+        // dd($slug);
 
         $category = Category::where('parent_id', 0)->get();
         return view('Web.polyci.polyci-list', [
@@ -238,13 +237,16 @@ class WebMainController extends Controller
 
     public function tintuc($category)
     {
+
+
         $post = $this->newService->getPostListByCategory($category);
-        //dd($post);
-        $category = Category::where('parent_id', 0)->get();
+
+        $categories = Category::where('parent_id', 0)->get();
+
         return view('Web.new.new-list', [
             'postObject' => $post,
             'newpost' => $this->newService->getNewPost(),
-            'category' => $category
+            'category' => $categories,
         ]);
     }
 
@@ -262,15 +264,17 @@ class WebMainController extends Controller
 
     public function muahang($slug)
     {
-        $post = $this->policyService->getPostListBySlug($slug);
-        // dd($post);
+        // Chuyển đổi chuỗi thành định dạng thân thiện với URL
+        $formattedSlug = Str::slug($slug);
+
+        $post = $this->policyService->getPostListBySlug($formattedSlug);
         $category = Category::where('parent_id', 0)->get();
+
         return view('Web.polyci.polyci-list', [
             'postObject' => $post,
             'category' => $category
         ]);
     }
-
     public function search($query)
     {
         $searchQuery = $query;

@@ -9,8 +9,7 @@
                         <li id="cart-target" class="cart">
                             <a href="/carts" class="cart " title="Giỏ hàng">
                                 <span class="fa fa-shopping-cart"></span>
-                                <span
-                                    id="cart-count">{{ !is_null(\Session::get('carts')) ? count(\Session::get('carts')) : 0 }}</span>
+                                <span id="cart-count">{{ !is_null(\Session::get('carts')) ? count(\Session::get('carts')) : 0 }}</span>
                             </a>
                         </li>
 
@@ -44,14 +43,12 @@
                         <ul class="dropdown-menu" role="menu">
                             @foreach($item->categoryChildrent as $children)
                             <li>
-                                <a href="/sanpham/{{$children->slug}}/{{$children->id}}"
-                                    title="Tất cả sản phẩm">{{$children->name}}</a>
+                                <a href="/sanpham/{{$children->slug}}/{{$children->id}}" title="Tất cả sản phẩm">{{$children->name}}</a>
                                 @if($children->categoryChildrent && $children->categoryChildrent->count() > 0)
                                 <ul class="dropdown-menu">
                                     @foreach($children->categoryChildrent as $childrenGrand)
                                     <li>
-                                        <a href="/sanpham/{{$childrenGrand->name}}/{{$childrenGrand->id}}"
-                                            title="Camera giao thông">{{$childrenGrand->name}}</a>
+                                        <a href="/sanpham/{{$childrenGrand->name}}/{{$childrenGrand->id}}" title="Camera giao thông">{{$childrenGrand->name}}</a>
                                     </li>
                                     @endforeach
                                 </ul>
@@ -67,51 +64,51 @@
 
 
                     <li class="dropdown">
-                        <a href="/chinhsach/Chính sách" title="Chính Sách" class="">
+                        <a href="{{ url('/chinhsach/' . Str::slug('Chính sách')) }}" title="Chính Sách" class="">
                             <span>Chính Sách</span>
                         </a>
                         <ul class="dropdown-menu" role="menu">
 
                             <li>
-                                <a href="/chinhsach/Chính sách vận chuyển" title="CHÍNH SÁCH VẬN CHUYỂN">CHÍNH SÁCH VẬN
+                                <a href="{{ url('/chinhsach/' . Str::slug('Chính sách vận chuyển')) }}" title="CHÍNH SÁCH VẬN CHUYỂN">CHÍNH SÁCH VẬN
                                     CHUYỂN</a>
 
                             </li>
 
                             <li>
-                                <a href="/chinhsach/Chính sách đổi trả" title="CHÍNH SÁCH ĐỔI TRẢ">CHÍNH
+                                <a href="{{ url('/chinhsach/' . Str::slug('Chính sách đổi trả')) }}" title="CHÍNH SÁCH ĐỔI TRẢ">CHÍNH
                                     SÁCH ĐỔI TRẢ</a>
 
                             </li>
 
                             <li>
-                                <a href="/chinhsach/Chính sách bảo mật" title="CHÍNH SÁCH BẢO MẬT">CHÍNH
+                                <a href="{{ url('/chinhsach/' . Str::slug('Chính sách bảo mật')) }}" title="CHÍNH SÁCH BẢO MẬT">CHÍNH
                                     SÁCH BẢO MẬT</a>
 
                             </li>
 
                             <li>
-                                <a href="/chinhsach/chinhsachdaily" title="CHÍNH SÁCH ĐẠI LÝ">CHÍNH SÁCH
+                                <a href="{{ url('/chinhsach/' . Str::slug('chinhsachdaily')) }}" title="CHÍNH SÁCH ĐẠI LÝ">CHÍNH SÁCH
                                     ĐẠI LÝ</a>
 
                             </li>
 
                             <li>
-                                <a href="/chinhsach/Phương thức thanh toán" title="PHƯƠNG THỨC THANH TOÁN">PHƯƠNG THỨC
+                                <a href="{{ url('/chinhsach/' . Str::slug('Phương thức thanh toán')) }}" title="PHƯƠNG THỨC THANH TOÁN">PHƯƠNG THỨC
                                     THANH
                                     TOÁN</a>
 
                             </li>
 
                             <li>
-                                <a href="/chinhsach/Thông tin chuyển khoản" title="THÔNG TIN CHUYỂN KHOẢN">THÔNG TIN
+                                <a href="{{ url('/chinhsach/' . Str::slug('Thông tin chuyển khoản')) }}" title="THÔNG TIN CHUYỂN KHOẢN">THÔNG TIN
                                     CHUYỂN
                                     KHOẢN</a>
 
                             </li>
 
                             <li>
-                                <a href="/chinhsach/Hướng dẫn mua hàng" title="HƯỚNG DẪN MUA HÀNG">HƯỚNG
+                                <a href="{{ url('/chinhsach/' . Str::slug('Hướng dẫn mua hàng')) }}" title="HƯỚNG DẪN MUA HÀNG">HƯỚNG
                                     DẪN MUA HÀNG</a>
 
                             </li>
@@ -122,7 +119,7 @@
 
 
                     <li>
-                        <a href="/tintuc/Tin tức" class="" title="Tin tức">
+                        <a href="{{ url('/tintuc/' . Str::slug('Tin tức')) }}" class="" title="Tin tức">
                             <span>Tin tức</span>
                         </a>
                     </li>
@@ -138,7 +135,7 @@
 
 
                     <li>
-                        <a href="/huongdanmuahang/Hướng dẫn mua hàng" class="" title="Hướng dẫn mua hàng">
+                        <a href="{{ url('/huongdanmuahang/' . Str::slug('Hướng dẫn mua hàng')) }}" class="" title="Hướng dẫn mua hàng">
                             <span>Hướng dẫn mua hàng</span>
                         </a>
                     </li>
@@ -172,8 +169,7 @@
                         <ul class="nodrop">
                             <li id="search-icon" class="drop-control">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-default dropdown-toggle icon-search"
-                                        data-toggle="dropdown" aria-expanded="false">
+                                    <button type="button" class="btn btn-default dropdown-toggle icon-search" data-toggle="dropdown" aria-expanded="false">
 
                                     </button>
                                     <div class="dropdown-menu" role="menu">

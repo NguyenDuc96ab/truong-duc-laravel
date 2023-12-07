@@ -151,7 +151,7 @@ class NewsService
 
         $postList = null;
 
-        if ($category == 'Tin tức') {
+        if ($category == 'tin-tuc') {
             $postList = News::where('category', 'Tin tức')
                 ->orderByDesc('id')->paginate(5);
         }

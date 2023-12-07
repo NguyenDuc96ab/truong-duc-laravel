@@ -54,7 +54,7 @@
 
 
             <li class="has-children icon icon-arrow-left">
-                <a href="/chinhsach/Chính sách">Chính Sách</a>
+                <a href="{{ url('/chinhsach/' . Str::slug('Chính sách')) }}">Chính Sách</a>
 
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
 
@@ -64,34 +64,40 @@
                     <ul class="cd-secondary-nav count-nav-7">
 
 
-                        <li><a href="/chinhsach/Chính sách vận chuyển">CHÍNH SÁCH VẬN CHUYỂN</a>
+                        <li><a href="{{ url('/chinhsach/' . Str::slug('Chính sách vận chuyển')) }}">CHÍNH SÁCH VẬN
+                                CHUYỂN</a>
                         </li>
 
 
 
-                        <li><a href="/chinhsach/Chính sách đổi trả">CHÍNH SÁCH ĐỔI TRẢ</a></li>
-
-
-
-                        <li><a href="/chinhsach/Chính sách bảo mật">CHÍNH SÁCH BẢO MẬT</a></li>
-
-
-
-                        <li><a href="/chinhsach/chinhsachdaily">CHÍNH SÁCH ĐẠI LÝ</a></li>
-
-
-
-                        <li><a href="/chinhsach/Phương thức thanh toán">PHƯƠNG THỨC THANH TOÁN</a>
+                        <li><a href="{{ url('/chinhsach/' . Str::slug('Chính sách đổi trả')) }}">CHÍNH SÁCH ĐỔI TRẢ</a>
                         </li>
 
 
 
-                        <li><a href="/chinhsach/Thông tin chuyển khoản">THÔNG TIN CHUYỂN KHOẢN</a>
+                        <li><a href="{{ url('/chinhsach/' . Str::slug('Chính sách bảo mật')) }}">CHÍNH SÁCH BẢO MẬT</a>
                         </li>
 
 
 
-                        <li><a href="/chinhsach/Hướng dẫn mua hàng">HƯỚNG DẪN MUA HÀNG</a></li>
+                        <li><a href="{{ url('/chinhsach/' . Str::slug('chinhsachdaily')) }}">CHÍNH SÁCH ĐẠI LÝ</a></li>
+
+
+
+                        <li><a href="{{ url('/chinhsach/' . Str::slug('Phương thức thanh toán')) }}">PHƯƠNG THỨC THANH
+                                TOÁN</a>
+                        </li>
+
+
+
+                        <li><a href="{{ url('/chinhsach/' . Str::slug('Thông tin chuyển khoản')) }}">THÔNG TIN CHUYỂN
+                                KHOẢN</a>
+                        </li>
+
+
+
+                        <li><a href="{{ url('/chinhsach/' . Str::slug('Hướng dẫn mua hàng')) }}">HƯỚNG DẪN MUA HÀNG</a>
+                        </li>
 
 
                     </ul>
@@ -100,7 +106,7 @@
 
 
 
-            <li><a href="/tintuc/Tin tức">Tin tức</a></li>
+            <li><a href="{{ url('/tintuc/' . Str::slug('Tin tức')) }}">Tin tức</a></li>
 
 
 
@@ -108,7 +114,7 @@
 
 
 
-            <li><a href="/huongdanmuahang/Hướng dẫn mua hàng">Hướng dẫn mua hàng</a></li>
+            <li><a href="{{ url('/huongdanmuahang/' . Str::slug('Hướng dẫn mua hàng')) }}">Hướng dẫn mua hàng</a></li>
 
 
         </ul>
