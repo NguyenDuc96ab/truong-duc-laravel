@@ -16,15 +16,15 @@
                         <ul>
 
                             <li>
-                                <a class="link" href="/gioithieu/Giới thiệu">Giới thiệu</a>
+                                <a class="link" href="{{ url('/gioithieu/' . Str::slug('Giới thiệu')) }}">Giới thiệu</a>
                             </li>
 
                             <li>
-                                <a class="link" href="/tintuc/Tin tức">Tin tức</a>
+                                <a class="link" href="{{ url('/tintuc/' . Str::slug('Tin tức')) }}">Tin tức</a>
                             </li>
 
                             <li>
-                                <a class="link" href="/gioithieu/Đại lý">Đại lý</a>
+                                <a class="link" href="{{ url('/gioithieu/' . Str::slug('Đại lý')) }}">Đại lý</a>
                             </li>
 
                             <li>
@@ -45,37 +45,37 @@
                             <ul>
 
                                 <li>
-                                    <a class="link" href="/chinhsach/Chính sách vận chuyển">CHÍNH
+                                    <a class="link" href="{{ url('/chinhsach/' . Str::slug('Chính sách vận chuyển')) }}">CHÍNH
                                         SÁCH VẬN CHUYỂN</a>
                                 </li>
 
                                 <li>
-                                    <a class="link" href="/chinhsach/Chính sách đổi trả">CHÍNH SÁCH
+                                    <a class="link" href="{{ url('/chinhsach/' . Str::slug('Chính sách đổi trả')) }}">CHÍNH SÁCH
                                         ĐỔI TRẢ</a>
                                 </li>
 
                                 <li>
-                                    <a class="link" href="/chinhsach/Chính sách bảo mật">CHÍNH SÁCH
+                                    <a class="link" href="{{ url('/chinhsach/' . Str::slug('Chính sách bảo mật')) }}">CHÍNH SÁCH
                                         BẢO MẬT</a>
                                 </li>
 
                                 <li>
-                                    <a class="link" href="/chinhsach/chinhsachdaily">CHÍNH
+                                    <a class="link" href="{{ url('/chinhsach/' . Str::slug('chinhsachdaily')) }}">CHÍNH
                                         SÁCH ĐẠI LÝ</a>
                                 </li>
 
                                 <li>
-                                    <a class="link" href="/chinhsach/Phương thức thanh toán">PHƯƠNG
+                                    <a class="link" href="{{ url('/chinhsach/' . Str::slug('Phương thức thanh toán')) }}">PHƯƠNG
                                         THỨC THANH TOÁN</a>
                                 </li>
 
                                 <li>
-                                    <a class="link" href="/chinhsach/Thông tin chuyển khoản">THÔNG
+                                    <a class="link" href="{{ url('/chinhsach/' . Str::slug('Thông tin chuyển khoản')) }}">THÔNG
                                         TIN CHUYỂN KHOẢN</a>
                                 </li>
 
                                 <li>
-                                    <a class="link" href="/chinhsach/Hướng dẫn mua hàng">HƯỚNG DẪN
+                                    <a class="link" href="{{ url('/chinhsach/' . Str::slug('Hướng dẫn mua hàng')) }}">HƯỚNG DẪN
                                         MUA HÀNG</a>
                                 </li>
 

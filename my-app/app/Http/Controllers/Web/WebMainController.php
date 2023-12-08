@@ -117,7 +117,7 @@ class WebMainController extends Controller
         // dd($sortBy);
         $displaySlug = $slug;
         //dd($displaySlug);
-        if ($slug == 'Sản phẩm') {
+        if ($slug == 'san-pham') {
             $query = Product::query();
         } else {
             $query = Product::query()->where('category_id', $id);
@@ -305,9 +305,12 @@ class WebMainController extends Controller
 
     public function gioithieu($slug)
     {
-        $post = $this->introduceService->getPostListBySlug($slug);
-        // dd($post);
+        $formattedSlug = Str::slug($slug);
+
+        $post = $this->introduceService->getPostListBySlug($formattedSlug);
+
         $category = Category::where('parent_id', 0)->get();
+
         return view('Web.introduce.introduce-list', [
             'postObject' => $post,
             'category' => $category

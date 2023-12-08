@@ -65,8 +65,14 @@ class IntroduceService
     public function getPostListBySlug($slug)
     {
         $postList = null;
-        $postList = Introduce::where('slug', $slug)
-            ->firstOrFail();
+        if ($slug == 'gioi-thieu') {
+            $postList = Introduce::where('slug', 'Giới thiệu')
+                ->firstOrFail();
+        } else {
+            $postList = Introduce::where('slug', 'Đại lý')
+                ->firstOrFail();
+        }
+
 
         return [
             'postList' => $postList,
