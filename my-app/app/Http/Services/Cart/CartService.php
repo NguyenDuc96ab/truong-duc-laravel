@@ -157,7 +157,7 @@ class CartService
         return Cart::select('product_id', DB::raw('SUM(qty) as qty'))
             ->groupBy('product_id')
             ->orderBy('qty', 'desc')
-            ->take(20)
+            ->take(12)
             ->get();
     }
 }
