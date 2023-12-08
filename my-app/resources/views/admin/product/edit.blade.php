@@ -47,7 +47,7 @@
 
         <div class="form-group">
             <label>Mô tả chi tiết</label>
-            <textarea name="content" id="content" class="ckeditor form-control">{{ $products->content }}</textarea>
+            <textarea name="content" id="summernote" class="ckeditor form-control">{{ $products->content }}</textarea>
 
         </div>
 

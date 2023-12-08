@@ -13,7 +13,8 @@
                 <!-- text input -->
                 <div class="form-group">
                     <label for="menu">Tên sản phẩm</label>
-                    <input type="text" name="name" value="{{ old('name') }}" class="form-control" id="name" placeholder="Nhập tên sản phẩm">
+                    <input type="text" name="name" value="{{ old('name') }}" class="form-control" id="name"
+                        placeholder="Nhập tên sản phẩm">
                 </div>
             </div>
             <div class="col-sm-6">
@@ -53,7 +54,7 @@
         </div>
         <div class="form-group">
             <label>Mô tả chi tiết</label>
-            <textarea name="content" id="content" class="ckeditor form-control">{{ old('content') }}</textarea>
+            <textarea name="content" id="summernote" class="ckeditor form-control">{{ old('content') }}</textarea>
 
         </div>
 
@@ -87,20 +88,20 @@
 <!-- Summernote -->
 <script src="../../plugins/summernote/summernote-bs4.min.js"></script>
 <script>
-    $(function() {
-        // Summernote
-        $('#summernote').summernote()
-    })
+$(function() {
+    // Summernote
+    $('#summernote').summernote()
+})
 </script>
 
 <script src="/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <script>
-    $(function() {
-        bsCustomFileInput.init();
-    });
+$(function() {
+    bsCustomFileInput.init();
+});
 </script>
 
 <script>
-    CKEDITOR.replace('content');
+CKEDITOR.replace('content');
 </script>
 @endsection
