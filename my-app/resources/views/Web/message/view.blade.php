@@ -104,17 +104,16 @@
 @if (Session::has('error'))
 <?php $message = Illuminate\Support\Facades\Session::get('error'); ?>
 <script>
-    $(function() {
+    document.addEventListener('DOMContentLoaded', function() {
         document.getElementById("message").innerHTML = "Gửi liên hệ lỗi";
     });
 </script>
 @endif
 
-
 @if (Session::has('success'))
 <?php $message = Illuminate\Support\Facades\Session::get('success'); ?>
 <script>
-    $(function() {
+    document.addEventListener('DOMContentLoaded', function() {
         document.getElementById("message").innerHTML = "Liên hệ đã được gửi đi. Cảm ơn bạn đã liên hệ chúng tôi";
     });
 </script>
