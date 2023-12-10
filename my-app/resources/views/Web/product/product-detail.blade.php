@@ -23,14 +23,15 @@
                         <div id="wrapper-detail">
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                    <div id="surround">
+                                    <!-- <div id="surround">
 
 
 
 
                                         <img class="product-image-feature"
                                             src="{{ "/images/" . $postObject->imgPro[0]->name }}"
-                                            alt=" Bộ 2 Đèn Đổi Màu RGB Theo Nhạc Thông Minh Wifi Tuya SHP-HUE1">
+                                            alt=" Bộ 2 Đèn Đổi Màu RGB Theo Nhạc Thông Minh Wifi Tuya SHP-HUE1"
+                                            onclick="openModal('{{ "/images/" . $postObject->imgPro[0]->name }}')">
 
 
 
@@ -53,8 +54,33 @@
 
 
 
-                                    </div>
+                                    </div> -->
+                                    <div id="surround">
+                                        <img class="product-image-feature"
+                                            src="{{ "/images/" . $postObject->imgPro[0]->name }}"
+                                            alt=" Bộ 2 Đèn Đổi Màu RGB Theo Nhạc Thông Minh Wifi Tuya SHP-HUE1"
+                                            onclick="openModal('{{ "/images/" . $postObject->imgPro[0]->name }}')">
 
+                                        <div id="myModal" class="modal">
+                                            <span class="close" onclick="closeModal()">&times;</span>
+                                            <img class="modal-content" id="modalImage">
+                                        </div>
+
+                                        <div id="sliderproduct" class="">
+                                            <ul class="slides" onclick="handleSliderClick(event)">
+                                                @foreach($postObject->imgPro as $item)
+                                                <li class="product-thumb">
+                                                    <a href="javascript:" data-image="{{ "/images/" . $item->name }}"
+                                                        data-zoom-image="{{ "/images/" . $item->name }}">
+                                                        <img alt="Bộ 2 Đèn Đổi Màu RGB Theo Nhạc Thông Minh Wifi Tuya SHP-HUE1"
+                                                            data-image="{{ "/images/" . $item->name }}"
+                                                            src="{{ "/images/" . $item->name }}">
+                                                    </a>
+                                                </li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                     <div class="product-title">
@@ -244,48 +270,59 @@
 
                                 <div class="item">
                                     @foreach($smartswitch as $item)
+                                    <form action="/add-cart" method="POST">
+                                        <div class="pro-loop">
+                                            <div class="product-block product-resize">
+                                                <div class="product-img image-resize view view-third clearfix">
 
-                                    <div class="pro-loop">
-                                        <div class="product-block product-resize">
-                                            <div class="product-img image-resize view view-third clearfix">
-
-                                                <a href="/detail/{{$item->id}}-{{ Str::slug($item->name, '-') }}.html"
-                                                    title="{{$item->name}}">
-                                                    @if ($item->firstImage1)
-                                                    <img alt="{{$item->firstImage1->name}}"
-                                                        src="{{ "/images/" . $item->firstImage1->name }}"
-                                                        alt=" {{$item->firstImage1->name}}" />
-                                                    @endif
-                                                </a>
-                                            </div>
-
-
-
-                                            <div class="product-detail clearfix">
-
-
-                                                <!-- sử dụng pull-left -->
-                                                <p class="pro-price">{{number_format($item->price,0,'','.')}} đ </p>
-                                                <p class="pro-price-del text-left">
-                                                <h3 class="pro-name"><a
-                                                        href="/detail/{{$item->id}}-{{ Str::slug($item->name, '-') }}.html"
+                                                    <a href="/detail/{{$item->id}}-{{ Str::slug($item->name, '-') }}.html"
                                                         title="{{$item->name}}">
-                                                        {{$item->name}}
-                                                    </a></h3>
-                                                <div class="add-cart">
-                                                    <a class="add-to-cart"
-                                                        href="aptomat-cau-dao-tong-bao-ve-qua-ap-thap-ap-qua-dong-ro-dong-dieu-khien-qua-wifi-zigbee-tuya-shp-io1v3.html"
-                                                        data-id="1107227649" title="{{$item->name}}">
-                                                        <img class="add-cart-img"
-                                                            src="https://theme.hstatic.net/1000162838/1000469515/14/add-cart.png?v=657"
-                                                            alt="cart">
+                                                        @if ($item->firstImage1)
+                                                        <img alt="{{$item->firstImage1->name}}"
+                                                            src="{{ "/images/" . $item->firstImage1->name }}"
+                                                            alt=" {{$item->firstImage1->name}}" />
+                                                        @endif
                                                     </a>
                                                 </div>
 
+
+
+                                                <div class="product-detail clearfix">
+
+
+                                                    <!-- sử dụng pull-left -->
+                                                    <p class="pro-price">{{number_format($item->price,0,'','.')}} đ </p>
+                                                    <p class="pro-price-del text-left">
+                                                    <h3 class="pro-name"><a
+                                                            href="/detail/{{$item->id}}-{{ Str::slug($item->name, '-') }}.html"
+                                                            title="{{$item->name}}">
+                                                            {{$item->name}}
+                                                        </a></h3>
+                                                    <input id="quantity" type="hidden" name="quantity" min="1" value="1"
+                                                        class="tc item-quantity" />
+                                                    <div class="add-cart">
+
+
+
+                                                        <button type="submit" title="{{$item->name }}"
+                                                            style="border: none; background: none; padding: 0; margin: 0;">
+                                                            <img class="add-cart-img"
+                                                                src="https://theme.hstatic.net/1000162838/1000469515/14/add-cart.png?v=657"
+                                                                alt="cart">
+                                                        </button>
+
+
+
+
+                                                        <input type="hidden" name="product_id" value="{{$item->id}}">
+
+                                                    </div>
+
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-
+                                        @csrf
+                                    </form>
                                     @endforeach
 
                                 </div>
@@ -323,45 +360,62 @@
                 @foreach($productt as $item)
                 <div class="col-md-3 col-sm-6 col-xs-6 pro-loop">
                     <!--sử dụng  -->
-                    <div class="product-block product-resize">
-                        <div class="product-img image-resize view view-third clearfix">
+                    <form action="/add-cart" method="POST">
+                        <div class="product-block product-resize">
+                            <div class="product-img image-resize view view-third clearfix">
 
 
-                            <a href="/detail/{{$item->id}}-{{ Str::slug($item->name, '-') }}.html"
-                                title="Aptomat Cầu Dao Tổng Bảo Vệ Quá Áp, Thấp Áp, Quá Dòng, Rò Dòng Điều Khiển Qua Wifi ZigBee Tuya SHP-IO1v3">
-                                @if ($item->firstImage)
-                                <img alt="{{$item->firstImage->name }}" src="{{ "/images/" . $item->firstImage->name }}"
-                                    alt="{{$item->firstImage->name }}" />
-                                @endif
-                            </a>
-                        </div>
-
-                        <div class="product-detail clearfix">
-
-
-                            <!-- sử dụng pull-left -->
-                            <p class="pro-price">{{number_format($item->price,0,'','.')}} đ </p>
-                            <p class="pro-price-del text-left">
-                                </h3>
-                            <h3 class="pro-name"><a href="/detail/{{$item->id}}-{{ Str::slug($item->name, '-') }}.html"
-                                    title="{{$item->name}}">
-                                    {{$item->name}} </a></h3>
-                            <div class="add-cart">
-                                <a class="add-to-cart"
-                                    href="aptomat-cau-dao-tong-bao-ve-qua-ap-thap-ap-qua-dong-ro-dong-dieu-khien-qua-wifi-zigbee-tuya-shp-io1v3.html"
-                                    data-id="1107227649"
+                                <a href="/detail/{{$item->id}}-{{ Str::slug($item->name, '-') }}.html"
                                     title="Aptomat Cầu Dao Tổng Bảo Vệ Quá Áp, Thấp Áp, Quá Dòng, Rò Dòng Điều Khiển Qua Wifi ZigBee Tuya SHP-IO1v3">
-                                    <img class="add-cart-img"
-                                        src="https://theme.hstatic.net/1000162838/1000469515/14/add-cart.png?v=657"
-                                        alt="cart">
+                                    @if ($item->firstImage)
+                                    <img alt="{{$item->firstImage->name }}"
+                                        src="{{ "/images/" . $item->firstImage->name }}"
+                                        alt="{{$item->firstImage->name }}" />
+                                    @endif
                                 </a>
                             </div>
 
+                            <div class="product-detail clearfix">
+
+
+                                <!-- sử dụng pull-left -->
+                                <p class="pro-price">{{number_format($item->price,0,'','.')}} đ </p>
+                                <p class="pro-price-del text-left">
+                                    </h3>
+                                <h3 class="pro-name"><a
+                                        href="/detail/{{$item->id}}-{{ Str::slug($item->name, '-') }}.html"
+                                        title="{{$item->name}}">
+                                        {{$item->name}} </a></h3>
+
+                                <input id="quantity" type="hidden" name="quantity" min="1" value="1"
+                                    class="tc item-quantity" />
+                                <div class="add-cart">
+
+
+
+                                    <button type="submit" title="{{$item->name }}"
+                                        style="border: none; background: none; padding: 0; margin: 0;">
+                                        <img class="add-cart-img"
+                                            src="https://theme.hstatic.net/1000162838/1000469515/14/add-cart.png?v=657"
+                                            alt="cart">
+                                    </button>
+
+
+
+
+                                    <input type="hidden" name="product_id" value="{{$item->id}}">
+
+                                </div>
+
+                            </div>
                         </div>
-                    </div>
+                        @csrf
+                    </form>
                 </div>
                 @endforeach
             </div>
+
+
         </div>
 
 
@@ -428,6 +482,25 @@ $(document).ready(function() {
         }
     });
 })
+</script>
+
+<script>
+var productImage = document.querySelector('.product-image-feature');
+
+function handleSliderClick(event) {
+    var target = event.target;
+
+    // Kiểm tra xem phần tử được click có phải là ảnh trong slider không
+    if (target.tagName === 'IMG' && target.parentElement.tagName === 'A') {
+        var imageSrc = target.getAttribute('data-image');
+        updateProductImage(imageSrc);
+    }
+}
+
+function updateProductImage(imageSrc) {
+    console.log('Updating product image with image source:', imageSrc);
+    productImage.src = imageSrc;
+}
 </script>
 </section>
 @endsection
