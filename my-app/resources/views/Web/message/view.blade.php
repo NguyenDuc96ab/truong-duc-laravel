@@ -19,7 +19,7 @@
             <div class="content-contact content-page">
 
                 <p class="text-center">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3892.1693081515305!2d108.0545588!3d12.702370100000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3171f7e737a72379%3A0x5eeb31b365bee7a8!2zODggWSBNb2FuIMOKbnXDtGwsIFTDom4gTOG7o2ksIFRow6BuaCBwaOG7kSBCdcO0biBNYSBUaHXhu5l0LCDEkOG6r2sgTOG6r2s!5e0!3m2!1svi!2s!4v1700536169991!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3892.172803828088!2d108.0547139!3d12.7021418!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3171f7e747e4626d%3A0xc5e47e34da8ba796!2zODAgWSBNb2FuIMOKbnXDtGwsIFTDom4gTOG7o2ksIFRow6BuaCBwaOG7kSBCdcO0biBNYSBUaHXhu5l0LCDEkOG6r2sgTOG6r2s!5e0!3m2!1svi!2s!4v1702182676625!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </p>
 
                 <div class="col-md-7" id="col-left contactFormWrapper">
@@ -115,8 +115,7 @@
 <?php $message = Illuminate\Support\Facades\Session::get('success'); ?>
 <script>
     $(function() {
-        document.getElementById("message").innerHTML =
-            "Liên hệ đã được gửi đi. Cảm ơn bạn đã liên hệ chúng tôi";
+        document.getElementById("message").innerHTML = "Liên hệ đã được gửi đi. Cảm ơn bạn đã liên hệ chúng tôi";
     });
 </script>
 @endif

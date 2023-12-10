@@ -225,4 +225,24 @@ Không thể liên kết thẻ tiếp thị lại với thông tin nhận dạng
 <script src='https://theme.hstatic.net/1000162838/1000469515/14/ega.smartsearch.configs.js?v=657' type='text/javascript'></script>
 
 <script src="/helper/helper.js"></script>
+
+<script src="/thongbao/jquery-1.11.2.min.js" type="text/javascript"></script>
+<script src="/thongbao/bootstrap.min.js" type="text/javascript"></script>
+<script src="/thongbao/jquery.metisMenu.js" type="text/javascript"></script>
+<script src="/thongbao/slick.min.js" type="text/javascript"></script>
+<script src="/thongbao/jquery.imageScroller.js" type="text/javascript"></script>
+<script src="/thongbao/jquery.wmuSlider.min.js" type="text/javascript"></script>
+<script src="/thongbao/jquery.wmuGallery.min.js" type="text/javascript"></script>
+<script src="/thongbao/jquery.mmenu.min.all.js" type="text/javascript"></script>
+<script src="/thongbao/jquery.nicescroll.min.js" type="text/javascript"></script>
+<script src="/thongbao/modernizr.custom.js" type="text/javascript"></script>
+<script src="/thongbao/jquery.imagesloaded.min.js" type="text/javascript"></script>
+<script src="/thongbao/cbpBGSlideshow.min.js" type="text/javascript"></script>
+<script src="/thongbao/jquery.easing.js" type="text/javascript"></script>
+<script src="/thongbao/script.js" type="text/javascript"></script>
+
+<script src="/thongbao/cf.js" type="text/javascript"></script>
+<script src="/thongbao/cf_style.js" type="text/javascript"></script>
 <!--end smart-search-->
+
+@yield('Web.footer-js')
