@@ -56,15 +56,12 @@
 
                                     </div> -->
                                     <div id="surround">
-                                        <img class="product-image-feature"
+                                        <img class="product-image-feature" id="myImg"
                                             src="{{ "/images/" . $postObject->imgPro[0]->name }}"
                                             alt=" Bộ 2 Đèn Đổi Màu RGB Theo Nhạc Thông Minh Wifi Tuya SHP-HUE1"
                                             onclick="openModal('{{ "/images/" . $postObject->imgPro[0]->name }}')">
 
-                                        <div id="myModal" class="modal">
-                                            <span class="close" onclick="closeModal()">&times;</span>
-                                            <img class="modal-content" id="modalImage">
-                                        </div>
+
 
                                         <div id="sliderproduct" class="">
                                             <ul class="slides" onclick="handleSliderClick(event)">
@@ -94,7 +91,17 @@
                                         <span>{{number_format($postObject->price,0,'','.')}} đ</span>
                                     </div>
 
+                                    <div id="myModal" class="modal">
 
+                                        <!-- The Close Button -->
+                                        <span class="close">&times;</span>
+
+                                        <!-- Modal Content (The Image) -->
+                                        <img class="modal-content" id="img01">
+
+                                        <!-- Modal Caption (Image Text) -->
+                                        <div id="caption"></div>
+                                    </div>
 
                                     <form id="add-item-form" action="/add-cart" method="post" class="variants clearfix">
                                         <div class="select clearfix" style="margin-top: 20px;">
@@ -485,21 +492,24 @@ $(document).ready(function() {
 </script>
 
 <script>
-var productImage = document.querySelector('.product-image-feature');
+var modal = document.getElementById("myModal");
 
-function handleSliderClick(event) {
-    var target = event.target;
-
-    // Kiểm tra xem phần tử được click có phải là ảnh trong slider không
-    if (target.tagName === 'IMG' && target.parentElement.tagName === 'A') {
-        var imageSrc = target.getAttribute('data-image');
-        updateProductImage(imageSrc);
-    }
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var img = document.getElementById("myImg");
+var modalImg = document.getElementById("img01");
+var captionText = document.getElementById("caption");
+img.onclick = function() {
+    modal.style.display = "block";
+    modalImg.src = this.src;
+    captionText.innerHTML = this.alt;
 }
 
-function updateProductImage(imageSrc) {
-    console.log('Updating product image with image source:', imageSrc);
-    productImage.src = imageSrc;
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
 }
 </script>
 </section>
