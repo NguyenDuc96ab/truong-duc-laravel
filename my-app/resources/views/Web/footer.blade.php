@@ -45,17 +45,20 @@
                             <ul>
 
                                 <li>
-                                    <a class="link" href="{{ url('/chinhsach/' . Str::slug('Chính sách vận chuyển')) }}">CHÍNH
+                                    <a class="link"
+                                        href="{{ url('/chinhsach/' . Str::slug('Chính sách vận chuyển')) }}">CHÍNH
                                         SÁCH VẬN CHUYỂN</a>
                                 </li>
 
                                 <li>
-                                    <a class="link" href="{{ url('/chinhsach/' . Str::slug('Chính sách đổi trả')) }}">CHÍNH SÁCH
+                                    <a class="link"
+                                        href="{{ url('/chinhsach/' . Str::slug('Chính sách đổi trả')) }}">CHÍNH SÁCH
                                         ĐỔI TRẢ</a>
                                 </li>
 
                                 <li>
-                                    <a class="link" href="{{ url('/chinhsach/' . Str::slug('Chính sách bảo mật')) }}">CHÍNH SÁCH
+                                    <a class="link"
+                                        href="{{ url('/chinhsach/' . Str::slug('Chính sách bảo mật')) }}">CHÍNH SÁCH
                                         BẢO MẬT</a>
                                 </li>
 
@@ -65,17 +68,20 @@
                                 </li>
 
                                 <li>
-                                    <a class="link" href="{{ url('/chinhsach/' . Str::slug('Phương thức thanh toán')) }}">PHƯƠNG
+                                    <a class="link"
+                                        href="{{ url('/chinhsach/' . Str::slug('Phương thức thanh toán')) }}">PHƯƠNG
                                         THỨC THANH TOÁN</a>
                                 </li>
 
                                 <li>
-                                    <a class="link" href="{{ url('/chinhsach/' . Str::slug('Thông tin chuyển khoản')) }}">THÔNG
+                                    <a class="link"
+                                        href="{{ url('/chinhsach/' . Str::slug('Thông tin chuyển khoản')) }}">THÔNG
                                         TIN CHUYỂN KHOẢN</a>
                                 </li>
 
                                 <li>
-                                    <a class="link" href="{{ url('/chinhsach/' . Str::slug('Hướng dẫn mua hàng')) }}">HƯỚNG DẪN
+                                    <a class="link"
+                                        href="{{ url('/chinhsach/' . Str::slug('Hướng dẫn mua hàng')) }}">HƯỚNG DẪN
                                         MUA HÀNG</a>
                                 </li>
 
@@ -102,7 +108,7 @@
                                     </a></span></p>
 
 
-                            <p><i class="fa fa-envelope-o"></i><span>Vienthongtruongduc@gmail.com</span>
+                            <p><i class="fa fa-envelope-o"></i><span>vienthongtruongduc@gmail.com</span>
                             </p>
 
                         </div>
@@ -129,7 +135,8 @@
     </div>
     <div class="footer-bottom">
         <div class="container copyright">
-            <p>Copyright &copy; 2023 Trường Đức - Thiết bị điện thông minh. <a target='_blank' href='http://kythuatdientruongduc.com/'>Powered
+            <p>Copyright &copy; 2023 Trường Đức - Thiết bị điện thông minh. <a target='_blank'
+                    href='http://kythuatdientruongduc.com/'>Powered
                     by Truong Duc</a>.</p>
 
         </div>
