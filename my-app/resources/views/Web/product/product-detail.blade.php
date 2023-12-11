@@ -47,10 +47,7 @@
 
                                     </div> -->
                             <div id="surround">
-                                <img class="product-image-feature" id="myImg"
-                                    src="{{ "/images/" . $postObject->imgPro[0]->name }}"
-                                    alt=" Bộ 2 Đèn Đổi Màu RGB Theo Nhạc Thông Minh Wifi Tuya SHP-HUE1"
-                                    onclick="openModal('{{ "/images/" . $postObject->imgPro[0]->name }}')">
+                                <img class="product-image-feature" id="myImg" src="{{ "/images/" . $postObject->imgPro[0]->name }}" alt=" {{ $postObject->name}}" onclick="openModal('{{ "/images/" . $postObject->imgPro[0]->name }}')">
 
 
 
@@ -58,11 +55,8 @@
                                     <ul class="slides" onclick="handleSliderClick(event)">
                                         @foreach($postObject->imgPro as $item)
                                         <li class="product-thumb">
-                                            <a href="javascript:" data-image="{{ "/images/" . $item->name }}"
-                                                data-zoom-image="{{ "/images/" . $item->name }}">
-                                                <img alt="Bộ 2 Đèn Đổi Màu RGB Theo Nhạc Thông Minh Wifi Tuya SHP-HUE1"
-                                                    data-image="{{ "/images/" . $item->name }}"
-                                                    src="{{ "/images/" . $item->name }}">
+                                            <a href="javascript:" data-image="{{ "/images/" . $item->name }}" data-zoom-image="{{ "/images/" . $item->name }}">
+                                                <img alt="{{ $item->name}}" data-image="{{ "/images/" . $item->name }}" src="{{ "/images/" . $item->name }}">
                                             </a>
                                         </li>
                                         @endforeach
@@ -109,8 +103,7 @@
                                 <div class="select-wrapper ">
                                     <div class="col-quanty">
                                         <label>Số lượng</label>
-                                        <input id="quantity" type="number" name="quantity" min="1" value="1"
-                                            class="tc item-quantity" />
+                                        <input id="quantity" type="number" name="quantity" min="1" value="1" class="tc item-quantity" />
                                     </div>
                                     <div class="col-md-6">
                                         <div class="baohanh">
@@ -123,8 +116,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6 col-md-12 col-sm-6 col-xs-12">
-                                        <button type="submit" class=" btn-detail btn-color-add btn-min-width btn-mgt"
-                                            name="add">
+                                        <button type="submit" class=" btn-detail btn-color-add btn-min-width btn-mgt" name="add">
                                             Thêm vào giỏ
                                         </button>
                                     </div>
@@ -146,8 +138,7 @@
                                     <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
 
 
-                                    <a class="addthis_button_google_plusone" g:plusone:size="medium"
-                                        g:plusone:count="false"></a>
+                                    <a class="addthis_button_google_plusone" g:plusone:size="medium" g:plusone:count="false"></a>
 
                                 </div>
                                 <script type="text/javascript" src="https://s7.addthis.com/js/250/addthis_widget.js">
@@ -236,19 +227,17 @@
                         </div>
                         <div class="container-fluid">
                             <div id="fb-root"></div>
-                            <div class="fb-comments"
-                                data-href="https://tanphong.vn/products/bo-2-den-doi-mau-rgb-theo-nhac-thong-minh-wifi-tuya-shp-hue1"
-                                data-numposts="5" width="100%" data-colorscheme="light"></div>
+                            <div class="fb-comments" data-href="https://tanphong.vn/products/bo-2-den-doi-mau-rgb-theo-nhac-thong-minh-wifi-tuya-shp-hue1" data-numposts="5" width="100%" data-colorscheme="light"></div>
                             <!-- script comment fb -->
                             <script type="text/javascript">
-                            (function(d, s, id) {
-                                var js, fjs = d.getElementsByTagName(s)[0];
-                                if (d.getElementById(id)) return;
-                                js = d.createElement(s);
-                                js.id = id;
-                                js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.0";
-                                fjs.parentNode.insertBefore(js, fjs);
-                            }(document, 'script', 'facebook-jssdk'));
+                                (function(d, s, id) {
+                                    var js, fjs = d.getElementsByTagName(s)[0];
+                                    if (d.getElementById(id)) return;
+                                    js = d.createElement(s);
+                                    js.id = id;
+                                    js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.0";
+                                    fjs.parentNode.insertBefore(js, fjs);
+                                }(document, 'script', 'facebook-jssdk'));
                             </script>
                         </div>
                     </div>
@@ -271,12 +260,9 @@
                                     <div class="product-block product-resize">
                                         <div class="product-img image-resize view view-third clearfix">
 
-                                            <a href="/detail/{{$item->id}}-{{ Str::slug($item->name, '-') }}.html"
-                                                title="{{$item->name}}">
+                                            <a href="/detail/{{$item->id}}-{{ Str::slug($item->name, '-') }}.html" title="{{$item->name}}">
                                                 @if ($item->firstImage1)
-                                                <img alt="{{$item->firstImage1->name}}"
-                                                    src="{{ "/images/" . $item->firstImage1->name }}"
-                                                    alt=" {{$item->firstImage1->name}}" />
+                                                <img alt="{{$item->firstImage1->name}}" src="{{ "/images/" . $item->firstImage1->name }}" alt=" {{$item->firstImage1->name}}" />
                                                 @endif
                                             </a>
                                         </div>
@@ -289,22 +275,16 @@
                                             <!-- sử dụng pull-left -->
                                             <p class="pro-price">{{number_format($item->price,0,'','.')}} đ </p>
                                             <p class="pro-price-del text-left">
-                                            <h3 class="pro-name"><a
-                                                    href="/detail/{{$item->id}}-{{ Str::slug($item->name, '-') }}.html"
-                                                    title="{{$item->name}}">
+                                            <h3 class="pro-name"><a href="/detail/{{$item->id}}-{{ Str::slug($item->name, '-') }}.html" title="{{$item->name}}">
                                                     {{$item->name}}
                                                 </a></h3>
-                                            <input id="quantity" type="hidden" name="quantity" min="1" value="1"
-                                                class="tc item-quantity" />
+                                            <input id="quantity" type="hidden" name="quantity" min="1" value="1" class="tc item-quantity" />
                                             <div class="add-cart">
 
 
 
-                                                <button type="submit" title="{{$item->name }}"
-                                                    style="border: none; background: none; padding: 0; margin: 0;">
-                                                    <img class="add-cart-img"
-                                                        src="https://theme.hstatic.net/1000162838/1000469515/14/add-cart.png?v=657"
-                                                        alt="cart">
+                                                <button type="submit" title="{{$item->name }}" style="border: none; background: none; padding: 0; margin: 0;">
+                                                    <img class="add-cart-img" src="https://theme.hstatic.net/1000162838/1000469515/14/add-cart.png?v=657" alt="cart">
                                                 </button>
 
 
@@ -356,12 +336,9 @@
                                     <div class="product-img image-resize view view-third clearfix">
 
 
-                                        <a href="/detail/{{$item->id}}-{{ Str::slug($item->name, '-') }}.html"
-                                            title="Aptomat Cầu Dao Tổng Bảo Vệ Quá Áp, Thấp Áp, Quá Dòng, Rò Dòng Điều Khiển Qua Wifi ZigBee Tuya SHP-IO1v3">
+                                        <a href="/detail/{{$item->id}}-{{ Str::slug($item->name, '-') }}.html" title="Aptomat Cầu Dao Tổng Bảo Vệ Quá Áp, Thấp Áp, Quá Dòng, Rò Dòng Điều Khiển Qua Wifi ZigBee Tuya SHP-IO1v3">
                                             @if ($item->firstImage)
-                                            <img alt="{{$item->firstImage->name }}"
-                                                src="{{ "/images/" . $item->firstImage->name }}"
-                                                alt="{{$item->firstImage->name }}" />
+                                            <img alt="{{$item->firstImage->name }}" src="{{ "/images/" . $item->firstImage->name }}" alt="{{$item->firstImage->name }}" />
                                             @endif
                                         </a>
                                     </div>
@@ -373,22 +350,16 @@
                                         <p class="pro-price">{{number_format($item->price,0,'','.')}} đ </p>
                                         <p class="pro-price-del text-left">
                                             </h3>
-                                        <h3 class="pro-name"><a
-                                                href="/detail/{{$item->id}}-{{ Str::slug($item->name, '-') }}.html"
-                                                title="{{$item->name}}">
+                                        <h3 class="pro-name"><a href="/detail/{{$item->id}}-{{ Str::slug($item->name, '-') }}.html" title="{{$item->name}}">
                                                 {{$item->name}} </a></h3>
 
-                                        <input id="quantity" type="hidden" name="quantity" min="1" value="1"
-                                            class="tc item-quantity" />
+                                        <input id="quantity" type="hidden" name="quantity" min="1" value="1" class="tc item-quantity" />
                                         <div class="add-cart">
 
 
 
-                                            <button type="submit" title="{{$item->name }}"
-                                                style="border: none; background: none; padding: 0; margin: 0;">
-                                                <img class="add-cart-img"
-                                                    src="https://theme.hstatic.net/1000162838/1000469515/14/add-cart.png?v=657"
-                                                    alt="cart">
+                                            <button type="submit" title="{{$item->name }}" style="border: none; background: none; padding: 0; margin: 0;">
+                                                <img class="add-cart-img" src="https://theme.hstatic.net/1000162838/1000469515/14/add-cart.png?v=657" alt="cart">
                                             </button>
 
 
@@ -412,23 +383,23 @@
 
 
                 <script>
-                var add_to_wishlist = function() {
-                    if (typeof(Storage) !== "undefined") {
-                        if (localStorage.recently_viewed) {
+                    var add_to_wishlist = function() {
+                        if (typeof(Storage) !== "undefined") {
+                            if (localStorage.recently_viewed) {
 
-                            if (localStorage.recently_viewed.indexOf(
-                                    '1st-birthday-princess-basic-party-kit-18-guests') == -1)
+                                if (localStorage.recently_viewed.indexOf(
+                                        '1st-birthday-princess-basic-party-kit-18-guests') == -1)
+                                    localStorage.recently_viewed =
+                                    '1st-birthday-princess-basic-party-kit-18-guests_' + localStorage
+                                    .recently_viewed;
+
+                            } else
                                 localStorage.recently_viewed =
-                                '1st-birthday-princess-basic-party-kit-18-guests_' + localStorage
-                                .recently_viewed;
-
-                        } else
-                            localStorage.recently_viewed =
-                            '1st-birthday-princess-basic-party-kit-18-guests';
-                    } else {
-                        console.log('Your Browser does not support storage!');
+                                '1st-birthday-princess-basic-party-kit-18-guests';
+                        } else {
+                            console.log('Your Browser does not support storage!');
+                        }
                     }
-                }
                 </script>
 
             </div>
@@ -441,60 +412,60 @@
     </div>
 
     <script>
-    $(".product-thumb img").click(function() {
-        $(".product-thumb").removeClass('active');
-        $(this).parents('li').addClass('active');
-        $(".product-image-feature").attr("src", $(this).attr("data-image"));
-        $(".product-image-feature").attr("data-zoom-image", $(this).attr("data-zoom-image"));
-    });
-
-    $(".product-thumb").first().addClass('active');
-    </script>
-
-    <script>
-    $(document).ready(function() {
-        $('#owl-recom-fake').owlCarousel({
-            loop: true,
-            nav: true,
-            items: 1,
-            dots: false,
-            autoPlay: true,
-            autoplayTimeout: 10000,
-            responsive: {
-                0: {
-                    items: 1
-                },
-                600: {
-                    items: 1
-                },
-                1000: {
-                    items: 1
-                }
-            }
+        $(".product-thumb img").click(function() {
+            $(".product-thumb").removeClass('active');
+            $(this).parents('li').addClass('active');
+            $(".product-image-feature").attr("src", $(this).attr("data-image"));
+            $(".product-image-feature").attr("data-zoom-image", $(this).attr("data-zoom-image"));
         });
-    })
+
+        $(".product-thumb").first().addClass('active');
     </script>
 
     <script>
-    var modal = document.getElementById("myModal");
+        $(document).ready(function() {
+            $('#owl-recom-fake').owlCarousel({
+                loop: true,
+                nav: true,
+                items: 1,
+                dots: false,
+                autoPlay: true,
+                autoplayTimeout: 10000,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
+        })
+    </script>
 
-    // Get the image and insert it inside the modal - use its "alt" text as a caption
-    var img = document.getElementById("myImg");
-    var modalImg = document.getElementById("img01");
-    var captionText = document.getElementById("caption");
-    img.onclick = function() {
-        modal.style.display = "block";
-        modalImg.src = this.src;
-        captionText.innerHTML = this.alt;
-    }
+    <script>
+        var modal = document.getElementById("myModal");
 
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
+        // Get the image and insert it inside the modal - use its "alt" text as a caption
+        var img = document.getElementById("myImg");
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+        img.onclick = function() {
+            modal.style.display = "block";
+            modalImg.src = this.src;
+            captionText.innerHTML = this.alt;
+        }
 
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
     </script>
 
 
