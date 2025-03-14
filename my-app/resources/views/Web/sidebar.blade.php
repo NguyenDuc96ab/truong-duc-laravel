@@ -20,8 +20,8 @@
                 $subItemId = uniqid('sub-item-');
 
                 @endphp
-            <li class="item has-sub">
-                <a href='/sanpham/{{$children->slug}}/{{$children->id}}'>
+            <li class="item has-sub" onmouseover="bigImg('{{ $subItemId }}')" onmouseout="normalImg('{{ $subItemId }}')">
+                <a href='/sanpham/{{$children->slug}}/{{$children->id}}'  >
                     <span class="lbl">{{ $children->name }}</span>
                     <span data-toggle="collapse" data-parent="#cssmenu" href="#{{ $subItemId }}" class="sign">
                         <img src="https://hstatic.net/0/0/global/design/theme-default/arrow-down.png">
@@ -100,6 +100,18 @@
 
         $("#list-group-l ul.navs li.active").find('ul.children').addClass("in");
     </script>
+
+<script>
+    function bigImg(x) {
+        var element = document.getElementById(x);
+        element.classList.add("in");
+    }
+
+    function normalImg(x) {
+        var element = document.getElementById(x);
+        element.classList.remove("in");
+    }
+</script>
 
 
     <!-- Sidebar menu-->

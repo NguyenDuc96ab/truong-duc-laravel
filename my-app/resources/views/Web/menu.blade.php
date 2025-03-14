@@ -48,7 +48,9 @@
                                 <ul class="dropdown-menu">
                                     @foreach($children->categoryChildrent as $childrenGrand)
                                     <li>
-                                        <a href="/sanpham/{{$childrenGrand->name}}/{{$childrenGrand->id}}" title="Camera giao thông">{{$childrenGrand->name}}</a>
+                                        <a href="/sanpham/{{$childrenGrand->name}}/{{$childrenGrand->id}}" title="Camera giao thông">
+                                            {{$childrenGrand}}
+                                        </a>
                                     </li>
                                     @endforeach
                                 </ul>

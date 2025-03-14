@@ -55,7 +55,7 @@ Route::post('/donhang', [CardController::class, 'add']);
 
 Route::get('/search/{query}', [WebMainController::class, 'search']);
 //Login
-Route::get('admin/users/login', [LoginController::class, 'index']);
+Route::get('admin/users/login', [LoginController::class, 'index'])->name('login');
 Route::post('admin/users/login/store', [LoginController::class, 'store']);
 
 Route::middleware(['auth'])->group(function () {

@@ -466,6 +466,13 @@
         span.onclick = function() {
             modal.style.display = "none";
         }
+
+        $(document).keyup(function(e) {
+            if (e.key === "Escape") { // escape key maps to keycode `27`
+                // <DO YOUR WORK HERE>
+                modal.style.display = "none";
+            }
+        });
     </script>
 
 
